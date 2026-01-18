@@ -195,42 +195,42 @@ h1{
 
 <div class="services">
   <div class="service" onclick="openService('Wash & Dry','wash-dry.jpg')">
-    <img src="images/wash-dry.jpg">
+    <img src="wash-dry.jpg">
     <div class="service-label">Wash & Dry</div>
   </div>
 
   <div class="service" onclick="openService('Wash, Dry & Fold','wash-dry-fold.jpg')">
-    <img src="images/wash-dry-fold.jpg">
+    <img src="wash-dry-fold.jpg">
     <div class="service-label">Wash, Dry & Fold</div>
   </div>
 
   <div class="service" onclick="openService('Ironing','ironing.jpg')">
-    <img src="images/ironing.jpg">
+    <img src="ironing.jpg">
     <div class="service-label">Ironing</div>
   </div>
 
   <div class="service" onclick="openService('Dry Cleaning','dry-cleaning.jpg')">
-    <img src="images/dry-cleaning.jpg">
+    <img src="dry-cleaning.jpg">
     <div class="service-label">Dry Cleaning</div>
   </div>
 
   <div class="service" onclick="openService('Student & Family Laundry','family-laundry.jpg')">
-    <img src="images/family-laundry.jpg">
+    <img src="family-laundry.jpg">
     <div class="service-label">Student & Family Laundry</div>
   </div>
 
   <div class="service" onclick="openService('Small Business Laundry','business-laundry.jpg')">
-    <img src="images/business-laundry.jpg">
+    <img src="business-laundry.jpg">
     <div class="service-label">Small Business Laundry</div>
   </div>
 </div>
 
-<!-- DASHBOARD -->
+<!-- DASHBOARD (RESTORED & UNCHANGED) -->
 <div class="actions" style="margin-top:46px;">
   <a href="dashboard/"><div class="btn">🔐 OPERATOR DASHBOARD</div></a>
 </div>
 
-<!-- EXPLORE OTHER STORES -->
+<!-- EXPLORE OTHER STORES (RESTORED) -->
 <div class="actions" style="margin-top:26px;">
   <a href="https://warstreetdigital.github.io/Shopystreet-/Explore">
     <div class="btn">EXPLORE OTHER STORES</div>
@@ -261,7 +261,7 @@ function toggleAudio(){
 
 function openService(name,img){
   currentService = name;
-  document.getElementById("overlayImg").src = "images/" + img;
+  document.getElementById("overlayImg").src = img;
   document.getElementById("overlay").classList.add("active");
 }
 
