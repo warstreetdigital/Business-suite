@@ -1,1 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHOPYSTREET — OPERATOR DASHBOARD</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0e0f12;
+  --panel:#15171c;
+  --fg:#eaeaea;
+  --muted:#9a9a9a;
+  --accent:#f0c040;
+  --border:#24262d;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:"Inter Tight","IBM Plex Sans","Helvetica Neue",Arial,system-ui;
+  background:var(--bg);
+  color:var(--fg);
+}
+
+.app{
+  max-width:430px;
+  margin:0 auto;
+  padding:24px 16px 60px;
+}
+
+.header{
+  margin-bottom:24px;
+}
+
+.header h1{
+  font-size:18px;
+  letter-spacing:1.6px;
+  font-weight:700;
+}
+
+.meta{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:6px;
+}
+
+.panel{
+  background:var(--panel);
+  border:1px solid var(--border);
+  padding:16px;
+  margin-bottom:16px;
+}
+
+.panel-title{
+  font-size:12px;
+  letter-spacing:1.4px;
+  font-weight:600;
+  margin-bottom:12px;
+  color:var(--muted);
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:8px;
+  font-size:13px;
+}
+
+.stat{
+  font-size:20px;
+  font-weight:700;
+}
+
+.btn{
+  width:100%;
+  padding:14px;
+  background:#1c1f26;
+  border:1px solid var(--border);
+  color:var(--fg);
+  font-size:12px;
+  letter-spacing:1.4px;
+  font-weight:600;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+.list-item{
+  font-size:13px;
+  padding:10px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.copy{
+  cursor:pointer;
+  color:var(--accent);
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<!-- HEADER -->
+<div class="header">
+  <h1>LAUNDRY SERVICES</h1>
+  <div class="meta">
+    OPERATOR: THENJIWE · STATUS: ACTIVE · TERRITORY: HARARE
+  </div>
+</div>
+
+<!-- BUSINESS SNAPSHOT -->
+<div class="panel">
+  <div class="panel-title">BUSINESS SNAPSHOT</div>
+  <div class="row"><span>Inquiries Today</span><span class="stat" id="inq">0</span></div>
+  <div class="row"><span>Orders Active</span><span class="stat" id="ord">0</span></div>
+  <div class="row"><span>Completed (7 days)</span><span class="stat" id="cmp">0</span></div>
+</div>
+
+<!-- OPERATIONS -->
+<div class="panel">
+  <div class="panel-title">OPERATIONS</div>
+  <div class="list-item">Assign Supplier</div>
+  <div class="list-item">Confirm 50% Payment</div>
+  <div class="list-item">Dispatch Courier</div>
+</div>
+
+<!-- ANALYTICS -->
+<div class="panel">
+  <div class="panel-title">ANALYTICS INSIGHT</div>
+  <div class="row"><span>Top Service</span><span>Wash & Fold</span></div>
+  <div class="row"><span>Peak Days</span><span>Fri – Sun</span></div>
+  <div class="row"><span>Delivery Usage</span><span>72%</span></div>
+</div>
+
+<!-- OPERATOR TOOLS -->
+<div class="panel">
+  <div class="panel-title">OPERATOR TOOLS (COPY READY)</div>
+
+  <div class="list-item copy" onclick="copyText('Hello, thank you for contacting our laundry service. Please share your location and items.')">
+    Copy: First Response
+  </div>
+
+  <div class="list-item copy" onclick="copyText('We require 50% upfront via EcoCash or Cash before service begins.')">
+    Copy: Payment Script
+  </div>
+
+  <div class="list-item copy" onclick="copyText('Courier will collect your items shortly. Please ensure items are packed and labeled.')">
+    Copy: Courier Instruction
+  </div>
+</div>
+
+<!-- STORE GUIDE -->
+<div class="panel">
+  <div class="panel-title">STORE GUIDE</div>
+  <div class="list-item">How the Business Works</div>
+  <div class="list-item">Service Rules</div>
+  <div class="list-item">Payment Logic</div>
+  <div class="list-item">Courier Flow</div>
+  <div class="list-item">Dispute Handling</div>
+</div>
+
+</div>
+
+<script>
+function copyText(text){
+  navigator.clipboard.writeText(text);
+  alert("Copied");
+}
+</script>
+
+</body>
+</html>
