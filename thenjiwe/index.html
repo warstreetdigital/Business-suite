@@ -34,7 +34,7 @@ body{
   padding:28px 16px 90px;
 }
 
-/* HEADER */
+/* HERO */
 h1{
   font-size:22px;
   font-weight:700;
@@ -49,6 +49,12 @@ h1{
 .location{
   font-size:12px;
   letter-spacing:1.4px;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+.system{
+  font-size:11px;
+  letter-spacing:1.2px;
   color:var(--muted);
   margin-bottom:26px;
 }
@@ -155,10 +161,6 @@ h1{
   font-size:11px;
   color:var(--muted);
 }
-.footer a{
-  color:var(--accent);
-  text-decoration:none;
-}
 </style>
 </head>
 
@@ -169,6 +171,7 @@ h1{
 <h1>THENJIWE LAUNDRY SERVICES</h1>
 <div class="tagline">Reliable laundry & dry cleaning services</div>
 <div class="location">HARARE CBD × CHITUNGWIZA</div>
+<div class="system">Shopystreet Store</div>
 
 <!-- ATTENTION ANCHOR -->
 <div class="video-wrap">
@@ -211,12 +214,12 @@ h1{
     <div class="service-label">Dry Cleaning</div>
   </div>
 
-  <div class="service" onclick="openService('Family Laundry','family-laundry.jpg')">
+  <div class="service" onclick="openService('Student & Family Laundry','family-laundry.jpg')">
     <img src="images/family-laundry.jpg">
     <div class="service-label">Student & Family Laundry</div>
   </div>
 
-  <div class="service" onclick="openService('Business Laundry','business-laundry.jpg')">
+  <div class="service" onclick="openService('Small Business Laundry','business-laundry.jpg')">
     <img src="images/business-laundry.jpg">
     <div class="service-label">Small Business Laundry</div>
   </div>
@@ -227,14 +230,16 @@ h1{
   <a href="dashboard/"><div class="btn">🔐 OPERATOR DASHBOARD</div></a>
 </div>
 
+<!-- EXPLORE OTHER STORES -->
+<div class="actions" style="margin-top:26px;">
+  <a href="https://warstreetdigital.github.io/Shopystreet-/Explore">
+    <div class="btn">EXPLORE OTHER STORES</div>
+  </a>
+</div>
+
 <!-- FOOTER -->
 <div class="footer">
-  <div>Shopystreet Store</div>
-  <div style="margin-top:8px;">
-    <a href="https://warstreetdigital.github.io/Shopystreet-/Explore">
-      EXPLORE OTHER STORES
-    </a>
-  </div>
+  Powered by Shopystreet
 </div>
 
 </div>
