@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SHOPYSTREET — LAUNDRY DASHBOARD</title>
+<title>SHOPYSTREET LAUNDRY SERVICES — DASHBOARD</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#0b0e13;
-  --panel:#131823;
+  --bg:#0a0d12;
+  --panel:#131826;
+  --book:#0f141f;
   --fg:#e9ebef;
-  --muted:#8e96a6;
+  --muted:#8f97a8;
   --border:#22283a;
   --accent:#d6b25e;
   --danger:#a84d4d;
@@ -36,29 +37,33 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  z-index:2000;
+  z-index:9999;
 }
+
 .lock-box{
   background:var(--panel);
   border:1px solid var(--border);
-  padding:24px;
+  padding:26px;
   width:90%;
   max-width:360px;
   text-align:center;
 }
+
 .lock-box h2{
-  font-size:14px;
-  letter-spacing:1.6px;
-  margin-bottom:12px;
+  font-size:13px;
+  letter-spacing:1.8px;
+  margin-bottom:14px;
 }
+
 .lock-box input{
   width:100%;
   padding:14px;
-  background:#0f131c;
+  background:#0e121b;
   border:1px solid var(--border);
   color:var(--fg);
-  margin-bottom:12px;
+  margin-bottom:14px;
 }
+
 .lock-box button{
   width:100%;
   padding:14px;
@@ -66,63 +71,91 @@ body{
   border:1px solid var(--border);
   color:var(--fg);
   font-weight:600;
-  letter-spacing:1.4px;
+  letter-spacing:1.6px;
   cursor:pointer;
 }
 
-.app{
-  max-width:440px;
-  margin:0 auto;
-  padding:20px 14px 60px;
+/* APP */
+#app{
+  display:none;
 }
 
-/* HERO HEADER */
-.hero{
+.app{
+  max-width:460px;
+  margin:0 auto;
+  padding:22px 16px 70px;
+}
+
+/* HEADER */
+.header{
   border-bottom:1px solid var(--border);
-  padding-bottom:14px;
-  margin-bottom:18px;
+  padding-bottom:18px;
+  margin-bottom:22px;
 }
-.hero h1{
-  font-size:18px;
-  letter-spacing:1.8px;
+
+.header h1{
+  font-size:19px;
   font-weight:700;
+  letter-spacing:1.9px;
+  margin:0;
 }
-.hero .meta{
+
+.operator-block{
+  margin-top:16px;
+}
+
+.operator-label{
+  font-size:11px;
+  letter-spacing:1.6px;
+  color:var(--muted);
+}
+
+.operator-name{
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:1.4px;
+  margin-top:4px;
+}
+
+.status-block{
+  margin-top:14px;
   font-size:12px;
   color:var(--muted);
-  margin-top:6px;
+  line-height:1.6;
 }
 
 /* PANELS */
 .panel{
   background:var(--panel);
   border:1px solid var(--border);
-  padding:16px;
-  margin-top:16px;
+  padding:18px;
+  margin-bottom:18px;
 }
+
 .panel-title{
-  font-size:12px;
-  letter-spacing:1.6px;
+  font-size:11px;
+  letter-spacing:1.8px;
   font-weight:600;
   color:var(--muted);
-  margin-bottom:12px;
+  margin-bottom:14px;
 }
+
 .row{
   display:flex;
   justify-content:space-between;
   font-size:13px;
   margin-bottom:8px;
 }
+
 .stat{
   font-size:20px;
   font-weight:700;
 }
 
-/* LINKS & BUTTONS */
 .btn{
   width:100%;
   padding:14px;
-  margin-top:10px;
+  margin-top:12px;
   background:#1b2230;
   border:1px solid var(--border);
   color:var(--fg);
@@ -131,45 +164,10 @@ body{
   font-weight:600;
   cursor:pointer;
 }
+
 .link{
   color:var(--accent);
-  cursor:pointer;
   font-size:13px;
-}
-
-/* FULLSCREEN BOOKS */
-.fullscreen{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:var(--bg);
-  padding:20px 16px 60px;
-  overflow-y:auto;
-  z-index:1500;
-}
-.fullscreen.active{display:block}
-.back{
-  font-size:13px;
-  font-weight:600;
-  margin-bottom:14px;
-  cursor:pointer;
-}
-.section{
-  margin-bottom:26px;
-}
-.section h3{
-  font-size:13px;
-  letter-spacing:1.6px;
-  margin-bottom:10px;
-}
-.section p{
-  font-size:14px;
-  color:var(--muted);
-  line-height:1.6;
-}
-.copy{
-  margin-top:10px;
-  color:var(--accent);
   cursor:pointer;
 }
 
@@ -178,44 +176,96 @@ body{
   display:flex;
   justify-content:space-between;
   font-size:13px;
-  padding:8px 0;
+  padding:10px 0;
   border-bottom:1px solid var(--border);
 }
+
 .frozen{
   color:var(--danger);
   font-weight:600;
+}
+
+/* BOOK MODE */
+.fullscreen{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:var(--book);
+  padding:26px 22px 70px;
+  overflow-y:auto;
+  z-index:5000;
+}
+
+.fullscreen.active{
+  display:block;
+}
+
+.back{
+  font-size:13px;
+  font-weight:600;
+  margin-bottom:22px;
+  cursor:pointer;
+}
+
+.section{
+  margin-bottom:34px;
+}
+
+.section h3{
+  font-size:14px;
+  letter-spacing:1.6px;
+  margin-bottom:12px;
+}
+
+.section p{
+  font-size:15px;
+  line-height:1.8;
+  color:#b8c0d4;
+}
+
+.copy{
+  margin-top:10px;
+  color:var(--accent);
+  cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<!-- PASSWORD LOCK -->
+<!-- LOCK SCREEN -->
 <div id="lock">
   <div class="lock-box">
     <h2>DASHBOARD ACCESS</h2>
-    <input type="password" id="pwd" placeholder="Enter password"/>
+    <input type="password" id="pwd" placeholder="Enter password">
     <button onclick="unlock()">UNLOCK</button>
   </div>
 </div>
 
-<div class="app" id="app" style="display:none;">
+<!-- APP -->
+<div id="app">
+<div class="app">
 
-<!-- HERO -->
-<div class="hero">
+<div class="header">
   <h1>SHOPYSTREET LAUNDRY SERVICES</h1>
-  <div class="meta">
-    OPERATOR: THENJIWE · STATUS: ACTIVE · TERRITORY: HARARE
+
+  <div class="operator-block">
+    <div class="operator-label">OPERATOR / OWNER</div>
+    <div class="operator-name">THENJIWE</div>
+  </div>
+
+  <div class="status-block">
+    STATUS: ACTIVE<br>
+    TERRITORY: HARARE<br>
+    MODE: OPERATIONAL
   </div>
 </div>
 
-<!-- STORE GUIDE -->
 <div class="panel">
   <div class="panel-title">STORE GUIDE</div>
   <div class="link" onclick="openGuide()">OPEN OPERATOR MANUAL</div>
 </div>
 
-<!-- BUSINESS SNAPSHOT -->
 <div class="panel">
   <div class="panel-title">BUSINESS SNAPSHOT — TODAY</div>
   <div class="row"><span>Inquiries</span><span class="stat" id="d-inq">0</span></div>
@@ -227,7 +277,6 @@ body{
   <button class="btn" onclick="logDaily('done')">MARK COMPLETE</button>
 </div>
 
-<!-- WEEKLY ANALYTICS -->
 <div class="panel">
   <div class="panel-title">WEEKLY ANALYTICS</div>
   <div class="row"><span>Total Inquiries</span><span id="w-inq">0</span></div>
@@ -235,114 +284,112 @@ body{
   <div class="row"><span>Conversion Rate</span><span id="w-rate">0%</span></div>
 </div>
 
-<!-- SUPPLIERS -->
 <div class="panel">
   <div class="panel-title">SUPPLIERS (FROZEN)</div>
-  <div class="supplier"><span>Supplier Alpha Laundry</span><span class="frozen">FROZEN</span></div>
-  <div class="supplier"><span>Urban Clean Hub</span><span class="frozen">FROZEN</span></div>
+  <div class="supplier"><span>AlphaWash Laundry</span><span class="frozen">FROZEN</span></div>
+  <div class="supplier"><span>UrbanClean Hub</span><span class="frozen">FROZEN</span></div>
   <div class="supplier"><span>PrimeCare Dry Cleaners</span><span class="frozen">FROZEN</span></div>
 </div>
 
-<!-- OPERATOR TOOLS -->
 <div class="panel">
   <div class="panel-title">OPERATOR TOOLS</div>
   <div class="link" onclick="openTools()">OPEN TOOLSET</div>
 </div>
 
 </div>
+</div>
 
 <!-- STORE GUIDE BOOK -->
 <div id="guide" class="fullscreen">
   <div class="back" onclick="closeGuide()">← Back</div>
 
-  <div class="section">
-    <h3>HOW THIS BUSINESS WORKS</h3>
-    <p>You operate a laundry services business without owning machines or staff. You control confirmation, coordination, and flow.</p>
-  </div>
-
-  <div class="section">
-    <h3>PAYMENT LOGIC</h3>
-    <p>50% upfront via EcoCash or Cash. Balance on completion. No work starts before confirmation.</p>
-  </div>
-
-  <div class="section">
-    <h3>ORDER FLOW</h3>
-    <p>Inquiry → Confirmation → Payment → Supplier → Courier → Completion.</p>
-  </div>
+  <div class="section"><h3>HOW THIS BUSINESS WORKS</h3><p>You operate a laundry services business without owning machines, staff, or premises. This store exists to coordinate demand, confirm payments, and control flow. You are the single authority point between customers, suppliers, and courier.</p></div>
+  <div class="section"><h3>SERVICES OFFERED</h3><p>Wash & Dry · Wash, Dry & Fold · Ironing · Dry Cleaning · Student & Family Laundry · Small Business Laundry</p></div>
+  <div class="section"><h3>PAYMENT LOGIC</h3><p>50% upfront and 50% on completion. Accepted methods are EcoCash and Cash. No work begins before payment confirmation. Courier fees are separate.</p></div>
+  <div class="section"><h3>SUPPLIERS & QUALITY</h3><p>Suppliers handle cleaning only. They do not handle payments or customer communication. You assign suppliers and control flow.</p></div>
+  <div class="section"><h3>ORDER FLOW</h3><p>Inquiry → Confirmation → Payment → Supplier → Courier → Completion → Close</p></div>
+  <div class="section"><h3>DISPUTES & ESCALATION</h3><p>Confirm facts first. Communicate clearly. Escalate only if a supplier defaults. Do not refund money you did not receive.</p></div>
 </div>
 
 <!-- OPERATOR TOOLS BOOK -->
 <div id="tools" class="fullscreen">
   <div class="back" onclick="closeTools()">← Back</div>
 
-  <div class="section">
-    <h3>FIRST RESPONSE</h3>
-    <p>Hello, thank you for contacting our laundry service. Please share your location and items.</p>
-    <div class="copy" onclick="copyText(this)">COPY</div>
-  </div>
-
-  <div class="section">
-    <h3>PAYMENT REQUEST</h3>
-    <p>We require a 50% upfront payment via EcoCash or Cash before service begins.</p>
-    <div class="copy" onclick="copyText(this)">COPY</div>
-  </div>
+  <div class="section"><h3>FIRST RESPONSE</h3><p>Hello, thank you for contacting our laundry service. Please share your location, items, and preferred service.</p><div class="copy" onclick="copyText(this)">COPY</div></div>
+  <div class="section"><h3>FOLLOW-UP</h3><p>Hello, just following up on your laundry inquiry. Please let me know if you would like us to proceed.</p><div class="copy" onclick="copyText(this)">COPY</div></div>
+  <div class="section"><h3>PAYMENT REQUEST</h3><p>To proceed, we require a 50% upfront payment via EcoCash or Cash. Once confirmed, we will dispatch your order.</p><div class="copy" onclick="copyText(this)">COPY</div></div>
+  <div class="section"><h3>PAYMENT REMINDER</h3><p>Kind reminder that we are awaiting the upfront payment so we can begin processing your laundry.</p><div class="copy" onclick="copyText(this)">COPY</div></div>
+  <div class="section"><h3>SUPPLIER DELAY</h3><p>Your laundry is currently being processed. There is a slight delay, and we appreciate your patience.</p><div class="copy" onclick="copyText(this)">COPY</div></div>
+  <div class="section"><h3>ORDER COMPLETE</h3><p>Your laundry is ready. Please arrange balance payment and confirm delivery or pickup. Thank you for using our service.</p><div class="copy" onclick="copyText(this)">COPY</div></div>
 </div>
 
 <script>
+/* UNLOCK */
 function unlock(){
-  if(document.getElementById("pwd").value === "@ezekiel99"){
-    document.getElementById("lock").style.display="none";
-    document.getElementById("app").style.display="block";
+  const pwd = document.getElementById("pwd").value;
+  const lockEl = document.getElementById("lock");
+  const appEl  = document.getElementById("app");
+
+  if(pwd === "@ezekiel99"){
+    lockEl.style.display = "none";
+    appEl.style.display  = "block";
   } else {
     alert("Incorrect password");
   }
 }
 
-/* DAILY / WEEKLY LOGIC */
-const todayKey = "daily-"+new Date().toDateString();
+/* STORAGE */
+const todayKey = "daily-" + new Date().toDateString();
 if(!localStorage.getItem(todayKey)){
-  localStorage.setItem(todayKey, JSON.stringify({inq:0,ord:0,done:0}));
+  localStorage.setItem(todayKey, JSON.stringify({inq:0, ord:0, done:0}));
 }
 if(!localStorage.getItem("weekly")){
-  localStorage.setItem("weekly", JSON.stringify({inq:0,done:0}));
+  localStorage.setItem("weekly", JSON.stringify({inq:0, done:0}));
 }
 
 function logDaily(type){
-  let d = JSON.parse(localStorage.getItem(todayKey));
+  const d = JSON.parse(localStorage.getItem(todayKey));
   d[type]++;
   localStorage.setItem(todayKey, JSON.stringify(d));
   renderDaily();
   logWeekly(type);
 }
+
 function logWeekly(type){
-  let w = JSON.parse(localStorage.getItem("weekly"));
-  if(type==="inq") w.inq++;
-  if(type==="done") w.done++;
+  const w = JSON.parse(localStorage.getItem("weekly"));
+  if(type === "inq") w.inq++;
+  if(type === "done") w.done++;
   localStorage.setItem("weekly", JSON.stringify(w));
   renderWeekly();
 }
+
 function renderDaily(){
-  let d = JSON.parse(localStorage.getItem(todayKey));
-  document.getElementById("d-inq").innerText = d.inq;
-  document.getElementById("d-ord").innerText = d.ord;
+  const d = JSON.parse(localStorage.getItem(todayKey));
+  document.getElementById("d-inq").innerText  = d.inq;
+  document.getElementById("d-ord").innerText  = d.ord;
   document.getElementById("d-done").innerText = d.done;
 }
+
 function renderWeekly(){
-  let w = JSON.parse(localStorage.getItem("weekly"));
-  document.getElementById("w-inq").innerText = w.inq;
+  const w = JSON.parse(localStorage.getItem("weekly"));
+  document.getElementById("w-inq").innerText  = w.inq;
   document.getElementById("w-done").innerText = w.done;
   document.getElementById("w-rate").innerText =
-    w.inq ? Math.round((w.done/w.inq)*100)+"%" : "0%";
+    w.inq ? Math.round((w.done / w.inq) * 100) + "%" : "0%";
 }
-function openGuide(){document.getElementById("guide").classList.add("active")}
-function closeGuide(){document.getElementById("guide").classList.remove("active")}
-function openTools(){document.getElementById("tools").classList.add("active")}
-function closeTools(){document.getElementById("tools").classList.remove("active")}
+
+function openGuide(){ document.getElementById("guide").classList.add("active"); }
+function closeGuide(){ document.getElementById("guide").classList.remove("active"); }
+function openTools(){ document.getElementById("tools").classList.add("active"); }
+function closeTools(){ document.getElementById("tools").classList.remove("active"); }
+
 function copyText(el){
   navigator.clipboard.writeText(el.previousElementSibling.innerText);
 }
 
-renderDaily(); renderWeekly();
+/* INIT */
+renderDaily();
+renderWeekly();
 </script>
 
 </body>
