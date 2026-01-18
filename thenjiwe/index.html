@@ -3,80 +3,273 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LAUNDRY SERVICES — SHOPYSTREET</title>
+
+<title>Thenjiwe Laundry Services | Shopystreet</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+:root{
+  --bg:#0a0d12;
+  --panel:#131826;
+  --fg:#e9ebef;
+  --muted:#8f97a8;
+  --border:#22283a;
+  --accent:#d6b25e;
+}
+
+*{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:"Inter Tight","IBM Plex Sans","Helvetica Neue",Arial,system-ui;
-  background:#fafafa;
-  color:#111;
+  background:var(--bg);
+  color:var(--fg);
   text-align:center;
 }
-.wrap{
-  max-width:420px;
+
+.container{
+  max-width:520px;
   margin:0 auto;
-  padding:40px 16px 60px;
+  padding:28px 16px 90px;
 }
+
+/* HEADER */
 h1{
   font-size:22px;
   font-weight:700;
-  letter-spacing:1.6px;
-  margin-bottom:6px;
-}
-.badge{
-  font-size:11px;
-  letter-spacing:1.4px;
-  font-weight:600;
-  color:#666;
-  margin-bottom:20px;
+  letter-spacing:1.8px;
+  margin-bottom:10px;
 }
 .tagline{
   font-size:14px;
-  font-weight:500;
-  margin-bottom:28px;
+  color:var(--muted);
+  margin-bottom:8px;
 }
 .location{
   font-size:12px;
   letter-spacing:1.4px;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+
+/* ATTENTION VIDEO */
+.video-wrap{
+  width:100%;
+  margin:0 auto 36px;
+}
+.video-wrap video{
+  width:100%;
+  height:auto;
+  border-radius:12px;
+}
+
+/* AUDIO */
+.audio-box{
+  background:var(--panel);
+  border:1px solid var(--border);
+  padding:16px;
   margin-bottom:30px;
 }
-.btn{
-  display:block;
-  width:100%;
-  padding:16px;
-  margin-bottom:14px;
-  border:1px solid #e5e5e5;
-  background:#fff;
+.audio-btn{
   font-size:13px;
   font-weight:600;
   letter-spacing:1.4px;
-  text-decoration:none;
-  color:#111;
+  cursor:pointer;
+  color:var(--accent);
 }
+
+/* ACTION BUTTONS */
+.actions{
+  display:flex;
+  gap:14px;
+  margin-bottom:42px;
+}
+.actions a{
+  flex:1;
+  text-decoration:none;
+}
+.btn{
+  padding:16px;
+  background:#1b2230;
+  border:1px solid var(--border);
+  color:var(--fg);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:1.6px;
+}
+
+/* SERVICES */
+.section-title{
+  font-size:13px;
+  letter-spacing:1.6px;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+.services{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:20px;
+}
+.service img{
+  width:100%;
+  border-radius:12px;
+}
+.service-label{
+  margin-top:10px;
+  font-size:14px;
+}
+
+/* OVERLAY */
+.overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:var(--bg);
+  padding:20px;
+  z-index:2000;
+}
+.overlay.active{display:block}
+.overlay img{
+  width:100%;
+  border-radius:12px;
+}
+.back{
+  text-align:left;
+  font-size:13px;
+  margin-bottom:14px;
+  cursor:pointer;
+}
+.inquire{
+  margin-top:18px;
+  padding:16px;
+  background:#1b2230;
+  border:1px solid var(--border);
+  font-size:13px;
+  letter-spacing:1.6px;
+}
+
+/* FOOTER */
 .footer{
-  margin-top:40px;
+  margin-top:50px;
   font-size:11px;
-  color:#777;
+  color:var(--muted);
+}
+.footer a{
+  color:var(--accent);
+  text-decoration:none;
 }
 </style>
 </head>
 
 <body>
-<div class="wrap">
 
-<h1>LAUNDRY SERVICES</h1>
-<div class="badge">SHOPYSTREET SERVICE</div>
-<div class="tagline">Professional washing, folding & dry cleaning</div>
-<div class="location">HARARE</div>
+<div class="container">
 
-<a class="btn" href="https://wa.me/2637XXXXXXX?text=LAUNDRY%20INQUIRY%20-%20THENJIWE">BOOK / INQUIRE</a>
-<a class="btn" href="tel:+2637XXXXXXX">CALL</a>
+<h1>THENJIWE LAUNDRY SERVICES</h1>
+<div class="tagline">Reliable laundry & dry cleaning services</div>
+<div class="location">HARARE CBD × CHITUNGWIZA</div>
 
-<div class="footer">Powered by Shopystreet</div>
+<!-- ATTENTION ANCHOR -->
+<div class="video-wrap">
+  <video src="attention.mp4" autoplay muted loop playsinline></video>
+</div>
+
+<!-- STORE AUDIO -->
+<div class="audio-box">
+  <div class="audio-btn" onclick="toggleAudio()">▶ LISTEN TO STORE INTRO</div>
+  <audio id="audio" src="laundry.mp3"></audio>
+</div>
+
+<!-- ACTION BUTTONS -->
+<div class="actions">
+  <a href="tel:0775485790"><div class="btn">CALL STORE</div></a>
+  <a href="https://wa.me/263775485790"><div class="btn">BOOK LAUNDRY</div></a>
+</div>
+
+<!-- SERVICES -->
+<div class="section-title">OUR SERVICES</div>
+
+<div class="services">
+  <div class="service" onclick="openService('Wash & Dry','wash-dry.jpg')">
+    <img src="images/wash-dry.jpg">
+    <div class="service-label">Wash & Dry</div>
+  </div>
+
+  <div class="service" onclick="openService('Wash, Dry & Fold','wash-dry-fold.jpg')">
+    <img src="images/wash-dry-fold.jpg">
+    <div class="service-label">Wash, Dry & Fold</div>
+  </div>
+
+  <div class="service" onclick="openService('Ironing','ironing.jpg')">
+    <img src="images/ironing.jpg">
+    <div class="service-label">Ironing</div>
+  </div>
+
+  <div class="service" onclick="openService('Dry Cleaning','dry-cleaning.jpg')">
+    <img src="images/dry-cleaning.jpg">
+    <div class="service-label">Dry Cleaning</div>
+  </div>
+
+  <div class="service" onclick="openService('Family Laundry','family-laundry.jpg')">
+    <img src="images/family-laundry.jpg">
+    <div class="service-label">Student & Family Laundry</div>
+  </div>
+
+  <div class="service" onclick="openService('Business Laundry','business-laundry.jpg')">
+    <img src="images/business-laundry.jpg">
+    <div class="service-label">Small Business Laundry</div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="actions" style="margin-top:46px;">
+  <a href="dashboard/"><div class="btn">🔐 OPERATOR DASHBOARD</div></a>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>Shopystreet Store</div>
+  <div style="margin-top:8px;">
+    <a href="https://warstreetdigital.github.io/Shopystreet-/Explore">
+      EXPLORE OTHER STORES
+    </a>
+  </div>
+</div>
 
 </div>
+
+<!-- IMAGE OVERLAY -->
+<div id="overlay" class="overlay">
+  <div class="back" onclick="closeOverlay()">← Back</div>
+  <img id="overlayImg">
+  <div class="inquire" onclick="inquire()">INQUIRE THIS SERVICE</div>
+</div>
+
+<script>
+let currentService = "";
+
+function toggleAudio(){
+  const a = document.getElementById("audio");
+  a.paused ? a.play() : a.pause();
+}
+
+function openService(name,img){
+  currentService = name;
+  document.getElementById("overlayImg").src = "images/" + img;
+  document.getElementById("overlay").classList.add("active");
+}
+
+function closeOverlay(){
+  document.getElementById("overlay").classList.remove("active");
+}
+
+function inquire(){
+  window.location.href =
+    "https://wa.me/263775485790?text=Hi,%20I’d%20like%20to%20inquire%20about%20" +
+    encodeURIComponent(currentService);
+}
+</script>
+
 </body>
 </html>
