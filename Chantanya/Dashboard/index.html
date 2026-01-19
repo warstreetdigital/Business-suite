@@ -1,1 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHANTANYA•BEAUTY — OPERATOR DASHBOARD</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0f0b07;
+  --panel:#17110c;
+  --book:#120d09;
+  --fg:#f1ece6;
+  --muted:#a89f95;
+  --border:#2a2018;
+  --accent:#c9a25f;
+  --danger:#a84d4d;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Inter Tight",system-ui}
+
+/* LOCK */
+#lock{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg);z-index:9999}
+.lock-box{background:var(--panel);border:1px solid var(--border);padding:26px;width:320px;text-align:center}
+.lock-box h3{letter-spacing:1.6px}
+.lock-box input{width:100%;padding:12px;margin:12px 0;background:#0e0a07;border:1px solid var(--border);color:var(--fg)}
+.lock-box button{width:100%;padding:12px;background:#1f160f;border:1px solid var(--border);color:var(--fg)}
+#error{color:var(--danger);margin-top:10px;display:none}
+
+/* APP */
+#app{display:none}
+.app{max-width:460px;margin:auto;padding:22px 16px 70px}
+
+/* HEADER */
+.header{border-bottom:1px solid var(--border);padding-bottom:18px;margin-bottom:22px}
+.header h1{font-size:19px;letter-spacing:1.9px;margin:0}
+.operator{margin-top:12px;font-size:14px}
+.status{margin-top:10px;font-size:12px;color:var(--muted);line-height:1.6}
+
+/* PANELS */
+.panel{background:var(--panel);border:1px solid var(--border);padding:18px;margin-bottom:18px}
+.panel-title{font-size:11px;letter-spacing:1.6px;color:var(--muted);margin-bottom:12px}
+.row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px}
+.stat{font-size:20px;font-weight:700}
+.btn{width:100%;padding:12px;margin-top:10px;background:#1f160f;border:1px solid var(--border);color:var(--fg);font-weight:600}
+.link{color:var(--accent);cursor:pointer;font-size:13px}
+
+/* FULLSCREEN BOOK */
+.fullscreen{display:none;position:fixed;inset:0;background:var(--book);padding:24px 20px 70px;overflow-y:auto;z-index:5000}
+.fullscreen.active{display:block}
+.back{margin-bottom:20px;cursor:pointer;font-weight:600}
+.section{margin-bottom:32px}
+.section h3{font-size:14px;letter-spacing:1.6px;margin-bottom:10px}
+.section p{font-size:15px;line-height:1.85;color:#d3c8be}
+.copy{color:var(--accent);margin-top:8px;cursor:pointer}
+</style>
+</head>
+
+<body>
+
+<!-- LOCK -->
+<div id="lock">
+  <div class="lock-box">
+    <h3>DASHBOARD ACCESS</h3>
+    <input id="pwd" type="password" placeholder="Enter password">
+    <button onclick="unlock()">UNLOCK</button>
+    <div id="error">Incorrect password</div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+<div class="app">
+
+<div class="header">
+  <h1>CHANTANYA•BEAUTY</h1>
+  <div class="operator">OPERATOR / OWNER: <strong>CHANTANYA</strong></div>
+  <div class="status">
+    MODE: MOBILE · DELIVERY ONLY<br>
+    DELIVERY WINDOW: 2–5 WORKING DAYS<br>
+    STORE PHONE: +263 77 754 2031
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-title">STORE GUIDE</div>
+  <div class="link" onclick="openGuide()">OPEN OPERATOR GUIDE BOOK</div>
+</div>
+
+<div class="panel">
+  <div class="panel-title">BUSINESS SNAPSHOT — TODAY</div>
+  <div class="row"><span>Inquiries</span><span class="stat" id="dInq">0</span></div>
+  <div class="row"><span>Orders Confirmed</span><span class="stat" id="dOrd">0</span></div>
+  <div class="row"><span>Orders Delivered</span><span class="stat" id="dDone">0</span></div>
+
+  <button class="btn" onclick="logDaily('inq')">LOG INQUIRY</button>
+  <button class="btn" onclick="logDaily('ord')">CONFIRM ORDER</button>
+  <button class="btn" onclick="logDaily('done')">MARK DELIVERED</button>
+</div>
+
+<div class="panel">
+  <div class="panel-title">OPERATOR TOOLS</div>
+  <div class="link" onclick="openTools()">OPEN MESSAGE TOOLSET</div>
+</div>
+
+</div>
+</div>
+
+<!-- GUIDE BOOK -->
+<div id="guide" class="fullscreen">
+  <div class="back" onclick="closeGuide()">← Back</div>
+
+  <div class="section">
+    <h3>1. WHAT THIS STORE IS</h3>
+    <p>
+      CHANTANYA•BEAUTY is a mobile beauty accessories store. You do not keep stock.
+      You operate as the sales and coordination point between customers and the supplier.
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>2. WHAT YOU SELL</h3>
+    <p>
+      Hair accessories, beauty tools, caps, bonnets, and small gift bundles.
+      No liquids, no creams, no regulated cosmetics.
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>3. HOW ORDERS WORK</h3>
+    <p>
+      Inquiry → Availability check → Delivery disclosure (2–5 days) → Payment →
+      Supplier fulfilment → Delivery → Close order.
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>4. DELIVERY RULES</h3>
+    <p>
+      Delivery takes 2–5 working days. Never promise same-day or next-day delivery.
+      Always repeat the delivery window before confirming payment.
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>5. PAYMENTS</h3>
+    <p>
+      All payments are confirmed by you. Do not place orders without payment confirmation.
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>6. WHAT NOT TO DO</h3>
+    <p>
+      Do not guess prices. Do not rush delivery promises. Do not send customers to suppliers.
+      Do not change suppliers.
+    </p>
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div id="tools" class="fullscreen">
+  <div class="back" onclick="closeTools()">← Back</div>
+
+  <div class="section">
+    <h3>FIRST RESPONSE</h3>
+    <p>
+      Hello, thank you for contacting CHANTANYA•BEAUTY.
+      Please share the item you want and your delivery location.
+      Delivery takes 2–5 working days.
+    </p>
+    <div class="copy" onclick="copy(this)">COPY</div>
+  </div>
+
+  <div class="section">
+    <h3>PAYMENT REQUEST</h3>
+    <p>
+      To proceed, please complete payment so I can place your order with our supplier.
+    </p>
+    <div class="copy" onclick="copy(this)">COPY</div>
+  </div>
+
+  <div class="section">
+    <h3>ORDER CONFIRMATION</h3>
+    <p>
+      Your order has been placed. Expected delivery is within 2–5 working days.
+    </p>
+    <div class="copy" onclick="copy(this)">COPY</div>
+  </div>
+
+  <div class="section">
+    <h3>CLIENT APPRECIATION</h3>
+    <p>
+      Thank you for shopping with CHANTANYA•BEAUTY.
+    </p>
+    <div class="copy" onclick="copy(this)">COPY</div>
+  </div>
+</div>
+
+<script>
+let todayKey;
+function unlock(){
+  if(document.getElementById("pwd").value==="@ezekiel99"){
+    lock.style.display="none";app.style.display="block";init();
+  }else error.style.display="block";
+}
+function init(){
+  todayKey="daily-"+new Date().toDateString();
+  if(!localStorage.getItem(todayKey))
+    localStorage.setItem(todayKey,JSON.stringify({inq:0,ord:0,done:0}));
+  render();
+}
+function logDaily(t){
+  const d=JSON.parse(localStorage.getItem(todayKey));d[t]++;localStorage.setItem(todayKey,JSON.stringify(d));render();
+}
+function render(){
+  const d=JSON.parse(localStorage.getItem(todayKey));
+  dInq.innerText=d.inq;dOrd.innerText=d.ord;dDone.innerText=d.done;
+}
+function openGuide(){guide.classList.add("active")}
+function closeGuide(){guide.classList.remove("active")}
+function openTools(){tools.classList.add("active")}
+function closeTools(){tools.classList.remove("active")}
+function copy(el){navigator.clipboard.writeText(el.previousElementSibling.innerText)}
+</script>
+
+</body>
+</html>
