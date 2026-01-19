@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLEAN PRO HOME & OFFICE SERVICES | Shopystreet</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0f0b07;
+  --panel:#17110c;
+  --fg:#f1ece6;
+  --muted:#a89f95;
+  --border:#2a2018;
+  --accent:#c9a25f;
+}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:"Inter Tight","IBM Plex Sans","Helvetica Neue",Arial,system-ui;
+  background:var(--bg);
+  color:var(--fg);
+  text-align:center;
+}
+
+.container{
+  max-width:520px;
+  margin:0 auto;
+  padding:28px 16px 90px;
+}
+
+/* HERO */
+h1{
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:1.8px;
+  margin-bottom:10px;
+}
+.tagline{
+  font-size:14px;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+.location{
+  font-size:12px;
+  letter-spacing:1.4px;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+.system{
+  font-size:11px;
+  letter-spacing:1.2px;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+
+/* ATTENTION VIDEO */
+.video-wrap{
+  width:100%;
+  margin:0 auto 36px;
+}
+.video-wrap video{
+  width:100%;
+  height:auto;
+  border-radius:12px;
+}
+
+/* AUDIO */
+.audio-box{
+  background:var(--panel);
+  border:1px solid var(--border);
+  padding:16px;
+  margin-bottom:30px;
+}
+.audio-btn{
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:1.4px;
+  cursor:pointer;
+  color:var(--accent);
+}
+
+/* ACTION BUTTONS */
+.actions{
+  display:flex;
+  gap:14px;
+  margin-bottom:42px;
+}
+.actions a{
+  flex:1;
+  text-decoration:none;
+}
+.btn{
+  padding:16px;
+  background:#1f160f;
+  border:1px solid var(--border);
+  color:var(--fg);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:1.6px;
+}
+
+/* SERVICES */
+.section-title{
+  font-size:13px;
+  letter-spacing:1.6px;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+.services{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:20px;
+}
+.service img{
+  width:100%;
+  border-radius:12px;
+}
+.service-label{
+  margin-top:10px;
+  font-size:14px;
+}
+
+/* OVERLAY */
+.overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:var(--bg);
+  padding:20px;
+  z-index:2000;
+}
+.overlay.active{display:block}
+.overlay img{
+  width:100%;
+  border-radius:12px;
+}
+.back{
+  text-align:left;
+  font-size:13px;
+  margin-bottom:14px;
+  cursor:pointer;
+}
+.inquire{
+  margin-top:18px;
+  padding:16px;
+  background:#1f160f;
+  border:1px solid var(--border);
+  font-size:13px;
+  letter-spacing:1.6px;
+}
+
+/* FOOTER */
+.footer{
+  margin-top:40px;
+  font-size:11px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>CLEAN PRO HOME & OFFICE SERVICES</h1>
+<div class="tagline">Professional cleaning for homes & workplaces</div>
+<div class="location">HARARE•CBD X MOBILE</div>
+<div class="system">Shopystreet Store</div>
+
+<!-- ATTENTION ANCHOR -->
+<div class="video-wrap">
+  <video src="attention.mp4" autoplay muted loop playsinline></video>
+</div>
+
+<!-- STORE AUDIO -->
+<div class="audio-box">
+  <div class="audio-btn" onclick="toggleAudio()">▶ LISTEN TO STORE INTRO</div>
+  <audio id="audio" src="cleanpro.mp3"></audio>
+</div>
+
+<!-- ACTION BUTTONS -->
+<div class="actions">
+  <a href="tel:0779388560"><div class="btn">CALL STORE</div></a>
+  <a href="https://wa.me/263779388560"><div class="btn">BOOK CLEANING</div></a>
+</div>
+
+<!-- SERVICES -->
+<div class="section-title">OUR SERVICES</div>
+
+<div class="services">
+  <div class="service" onclick="openService('Home Cleaning','home-cleaning.jpg')">
+    <img src="home-cleaning.jpg">
+    <div class="service-label">Home Cleaning</div>
+  </div>
+
+  <div class="service" onclick="openService('Office Cleaning','office-cleaning.jpg')">
+    <img src="office-cleaning.jpg">
+    <div class="service-label">Office Cleaning</div>
+  </div>
+
+  <div class="service" onclick="openService('Deep Cleaning','deep-cleaning.jpg')">
+    <img src="deep-cleaning.jpg">
+    <div class="service-label">Deep Cleaning</div>
+  </div>
+
+  <div class="service" onclick="openService('Post Construction Cleaning','post-construction.jpg')">
+    <img src="post-construction.jpg">
+    <div class="service-label">Post-Construction Cleaning</div>
+  </div>
+
+  <div class="service" onclick="openService('Sanitisation','sanitisation.jpg')">
+    <img src="sanitisation.jpg">
+    <div class="service-label">Sanitisation & Disinfection</div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="actions" style="margin-top:46px;">
+  <a href="Dashboard/"><div class="btn">🔐 OPERATOR DASHBOARD</div></a>
+</div>
+
+<!-- EXPLORE -->
+<div class="actions" style="margin-top:26px;">
+  <a href="https://warstreetdigital.github.io/Shopystreet-/Explore">
+    <div class="btn">EXPLORE OTHER STORES</div>
+  </a>
+</div>
+
+<div class="footer">
+  Powered by Shopystreet
+</div>
+
+</div>
+
+<!-- IMAGE OVERLAY -->
+<div id="overlay" class="overlay">
+  <div class="back" onclick="closeOverlay()">← Back</div>
+  <img id="overlayImg">
+  <div class="inquire" onclick="inquire()">INQUIRE THIS SERVICE</div>
+</div>
+
+<script>
+let currentService = "";
+
+function toggleAudio(){
+  const a = document.getElementById("audio");
+  a.paused ? a.play() : a.pause();
+}
+
+function openService(name,img){
+  currentService = name;
+  document.getElementById("overlayImg").src = img;
+  document.getElementById("overlay").classList.add("active");
+}
+
+function closeOverlay(){
+  document.getElementById("overlay").classList.remove("active");
+}
+
+function inquire(){
+  window.location.href =
+    "https://wa.me/263779388560?text=Hi,%20I’d%20like%20to%20inquire%20about%20" +
+    encodeURIComponent(currentService);
+}
+</script>
+
+</body>
+</html>
