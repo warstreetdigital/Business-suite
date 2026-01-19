@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOUSE OF ZALACKRON — OPERATOR DASHBOARD</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f4f6f8;
+  --panel:#ffffff;
+  --book:#eef1f4;
+  --fg:#1e2a32;
+  --muted:#6b7a86;
+  --border:#d6dde3;
+  --accent:#2f8f6b;
+  --danger:#b94a48;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Inter Tight",system-ui}
+
+/* LOCK */
+#lock{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg);z-index:9999}
+.lock-box{background:var(--panel);border:1px solid var(--border);padding:28px;width:340px;text-align:center}
+.lock-box h3{letter-spacing:1.6px;margin-bottom:14px}
+.lock-box input{width:100%;padding:14px;margin:12px 0;border:1px solid var(--border)}
+.lock-box button{width:100%;padding:14px;background:var(--accent);border:none;color:white;font-weight:600}
+#error{color:var(--danger);margin-top:10px;display:none}
+
+/* APP */
+#app{display:none}
+.app{max-width:480px;margin:auto;padding:24px 16px 80px}
+
+/* HEADER */
+.header{border-bottom:1px solid var(--border);padding-bottom:18px;margin-bottom:22px}
+.header h1{font-size:20px;letter-spacing:1.8px;margin:0}
+.operator{margin-top:10px;font-size:14px}
+.status{margin-top:8px;font-size:12px;color:var(--muted);line-height:1.6}
+
+/* SERVICE CARDS */
+.card{background:var(--panel);border:1px solid var(--border);padding:18px;margin-bottom:18px}
+.card h3{margin:0 0 8px;font-size:15px;letter-spacing:1.4px}
+.card p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* SNAPSHOT */
+.row{display:flex;justify-content:space-between;font-size:13px;margin:6px 0}
+.stat{font-size:18px;font-weight:700}
+
+/* BUTTONS */
+.btn{width:100%;padding:14px;margin-top:10px;background:#f1f4f6;border:1px solid var(--border);font-weight:600;letter-spacing:1.2px}
+.link{color:var(--accent);cursor:pointer;font-size:13px}
+
+/* FULLSCREEN BOOK */
+.fullscreen{display:none;position:fixed;inset:0;background:var(--book);padding:26px 22px 80px;overflow-y:auto;z-index:5000}
+.fullscreen.active{display:block}
+.back{margin-bottom:20px;font-weight:600;cursor:pointer}
+.section{margin-bottom:34px}
+.section h4{font-size:14px;letter-spacing:1.4px;margin-bottom:10px}
+.section p{font-size:15px;line-height:1.8}
+
+/* COPY */
+.copy{color:var(--accent);margin-top:8px;cursor:pointer}
+</style>
+</head>
+
+<body>
+
+<!-- LOCK -->
+<div id="lock">
+  <div class="lock-box">
+    <h3>DASHBOARD ACCESS</h3>
+    <input id="pwd" type="password" placeholder="Enter password">
+    <button onclick="unlock()">UNLOCK</button>
+    <div id="error">Incorrect password</div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+<div class="app">
+
+<div class="header">
+  <h1>HOUSE OF ZALACKRON</h1>
+  <div class="operator">OWNER / OPERATOR: <strong>RONALD MALABA</strong></div>
+  <div class="status">
+    SERVICES: ELECTRICAL · SOLAR · PLUMBING<br>
+    OPERATING MODE: ON-SITE & PROJECT BASED<br>
+    CONTACT: 0779 068 932
+  </div>
+</div>
+
+<div class="card">
+  <h3>STORE GUIDE</h3>
+  <div class="link" onclick="openGuide()">OPEN OPERATOR MANUAL</div>
+</div>
+
+<div class="card">
+  <h3>DAILY BUSINESS SNAPSHOT</h3>
+  <div class="row"><span>Inquiries</span><span class="stat" id="inq">0</span></div>
+  <div class="row"><span>Jobs Confirmed</span><span class="stat" id="ord">0</span></div>
+  <div class="row"><span>Jobs Completed</span><span class="stat" id="done">0</span></div>
+
+  <button class="btn" onclick="log('inq')">LOG INQUIRY</button>
+  <button class="btn" onclick="log('ord')">CONFIRM JOB</button>
+  <button class="btn" onclick="log('done')">MARK COMPLETED</button>
+</div>
+
+<div class="card">
+  <h3>SERVICE CARDS</h3>
+  <p>Each service operates as an independent offering.</p>
+  <p>Electrical · Solar Installation · Plumbing</p>
+</div>
+
+<div class="card">
+  <h3>OPERATOR TOOLS</h3>
+  <div class="link" onclick="openTools()">OPEN MESSAGE TOOLS</div>
+</div>
+
+</div>
+</div>
+
+<!-- GUIDE -->
+<div id="guide" class="fullscreen">
+  <div class="back" onclick="closeGuide()">← Back</div>
+
+  <div class="section">
+    <h4>1. WHAT HOUSE OF ZALACKRON IS</h4>
+    <p>
+      House of Zalackron is a professional engineering services platform.
+      You coordinate electrical, solar, and plumbing services.
+      You do not rush jobs. You operate project-by-project.
+    </p>
+  </div>
+
+  <div class="section">
+    <h4>2. HOW JOBS FLOW</h4>
+    <p>
+      Inquiry → Site understanding → Scope confirmation →
+      Job approval → Execution → Completion → Close.
+    </p>
+  </div>
+
+  <div class="section">
+    <h4>3. SERVICE SEPARATION</h4>
+    <p>
+      Electrical, Solar, and Plumbing are treated as separate service cards.
+      Never mix scopes unless approved.
+    </p>
+  </div>
+
+  <div class="section">
+    <h4>4. PAYMENTS & TRUST</h4>
+    <p>
+      Payments are confirmed by the operator.
+      No technician collects money directly from clients.
+    </p>
+  </div>
+
+  <div class="section">
+    <h4>5. WHAT NOT TO DO</h4>
+    <p>
+      Do not quote blindly.
+      Do not promise timelines without site clarity.
+      Do not overload a single job with multiple services.
+    </p>
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div id="tools" class="fullscreen">
+  <div class="back" onclick="closeTools()">← Back</div>
+
+  <div class="section">
+    <h4>FIRST RESPONSE</h4>
+    <p>
+      Hello, thank you for contacting House of Zalackron.
+      Please let me know which service you need
+      (Electrical, Solar, or Plumbing) and your location.
+    </p>
+    <div class="copy" onclick="copy(this)">COPY</div>
+  </div>
+
+  <div class="section">
+    <h4>SCOPE CONFIRMATION</h4>
+    <p>
+      Thank you. I’m reviewing your request and will confirm
+      scope, availability, and next steps shortly.
+    </p>
+    <div class="copy" onclick="copy(this)">COPY</div>
+  </div>
+
+  <div class="section">
+    <h4>JOB CONFIRMATION</h4>
+    <p>
+      Your job has been approved.
+      Our team will proceed as discussed.
+    </p>
+    <div class="copy" onclick="copy(this)">COPY</div>
+  </div>
+
+  <div class="section">
+    <h4>COMPLETION MESSAGE</h4>
+    <p>
+      The job has been completed successfully.
+      Thank you for choosing House of Zalackron.
+    </p>
+    <div class="copy" onclick="copy(this)">COPY</div>
+  </div>
+</div>
+
+<script>
+let key;
+function unlock(){
+  if(pwd.value==="@ezekiel99"){
+    lock.style.display="none";app.style.display="block";init();
+  }else error.style.display="block";
+}
+function init(){
+  key="daily-"+new Date().toDateString();
+  if(!localStorage.getItem(key))
+    localStorage.setItem(key,JSON.stringify({inq:0,ord:0,done:0}));
+  render();
+}
+function log(t){
+  const d=JSON.parse(localStorage.getItem(key));d[t]++;localStorage.setItem(key,JSON.stringify(d));render();
+}
+function render(){
+  const d=JSON.parse(localStorage.getItem(key));
+  inq.innerText=d.inq;ord.innerText=d.ord;done.innerText=d.done;
+}
+function openGuide(){guide.classList.add("active")}
+function closeGuide(){guide.classList.remove("active")}
+function openTools(){tools.classList.add("active")}
+function closeTools(){tools.classList.remove("active")}
+function copy(el){navigator.clipboard.writeText(el.previousElementSibling.innerText)}
+</script>
+
+</body>
+</html>
