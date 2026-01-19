@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHANTANYA•BEAUTY | Shopystreet</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#fff2f7;          /* light pink */
+  --panel:#ffe6ef;
+  --fg:#3b1f2a;
+  --muted:#8f5b6d;
+  --border:#f2c6d6;
+  --accent:#e48fb0;
+}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:"Inter Tight",system-ui;
+  background:var(--bg);
+  color:var(--fg);
+  text-align:center;
+}
+
+.container{
+  max-width:100%;
+  padding:28px 16px 90px;
+}
+
+/* HERO */
+h1{
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:1.8px;
+  margin:0;
+}
+.tagline{
+  font-size:14px;
+  color:var(--muted);
+  margin-top:6px;
+}
+.location{
+  font-size:12px;
+  letter-spacing:1.4px;
+  color:var(--muted);
+  margin-top:6px;
+}
+.system{
+  font-size:11px;
+  letter-spacing:1.2px;
+  color:var(--muted);
+  margin-top:18px;
+}
+
+/* ATTENTION */
+.attention video{
+  width:100%;
+  border-radius:16px;
+  margin:32px 0;
+}
+
+/* AUDIO */
+.audio-box{
+  background:var(--panel);
+  border:1px solid var(--border);
+  padding:16px;
+  margin-bottom:28px;
+}
+.audio-btn{
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:1.4px;
+  color:var(--accent);
+  cursor:pointer;
+}
+
+/* ACTION BUTTONS */
+.actions{
+  display:flex;
+  gap:14px;
+  margin-bottom:34px;
+}
+.actions a{
+  flex:1;
+  text-decoration:none;
+}
+.btn{
+  padding:16px;
+  background:#ffd6e6;
+  border:1px solid var(--border);
+  color:var(--fg);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:1.4px;
+}
+
+/* EDITORIAL RAIL */
+.rail{
+  margin-bottom:42px;
+}
+.rail-title{
+  font-size:13px;
+  letter-spacing:1.6px;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+.rail-track{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  padding-bottom:6px;
+}
+.rail-track img{
+  width:240px;
+  border-radius:16px;
+  cursor:pointer;
+  flex-shrink:0;
+}
+
+/* SERVICES */
+.services{
+  margin-top:46px;
+}
+.service{
+  background:var(--panel);
+  border:1px solid var(--border);
+  padding:16px;
+  margin-bottom:14px;
+  font-size:13px;
+  font-weight:500;
+  cursor:pointer;
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:var(--bg);
+  padding:22px;
+  z-index:5000;
+}
+.modal.active{display:block}
+.modal img{
+  width:100%;
+  border-radius:16px;
+}
+.back{
+  text-align:left;
+  font-size:13px;
+  font-weight:600;
+  margin-bottom:14px;
+  cursor:pointer;
+}
+
+/* FOOTER */
+.footer{
+  margin-top:44px;
+  font-size:11px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>CHANTANYA•BEAUTY</h1>
+<div class="tagline">Curated beauty accessories, delivered</div>
+<div class="location">• MOBILE • DELIVERIES (2–5 WORKING DAYS)</div>
+<div class="system">Shopystreet Store</div>
+
+<!-- ATTENTION ANCHOR -->
+<div class="attention">
+  <video src="attention.mp4" autoplay muted loop playsinline></video>
+</div>
+
+<!-- AUDIO -->
+<div class="audio-box">
+  <div class="audio-btn" onclick="toggleAudio()">▶ LISTEN TO STORE INTRO</div>
+  <audio id="audio" src="chantanya.mp3"></audio>
+</div>
+
+<!-- PRIMARY ACTIONS -->
+<div class="actions">
+  <a href="tel:+263777542031"><div class="btn">CALL STORE</div></a>
+  <a href="https://wa.me/263777542031"><div class="btn">PLACE ORDER</div></a>
+</div>
+
+<!-- PRODUCT RAILS -->
+<div class="rail">
+  <div class="rail-title">HAIR ACCESSORIES</div>
+  <div class="rail-track">
+    <img src="hair1.jpg" onclick="openImg(this.src)">
+    <img src="hair2.jpg" onclick="openImg(this.src)">
+    <img src="hair3.jpg" onclick="openImg(this.src)">
+    <img src="hair4.jpg" onclick="openImg(this.src)">
+  </div>
+</div>
+
+<div class="rail">
+  <div class="rail-title">BEAUTY TOOLS</div>
+  <div class="rail-track">
+    <img src="tools1.jpg" onclick="openImg(this.src)">
+    <img src="tools2.jpg" onclick="openImg(this.src)">
+    <img src="tools3.jpg" onclick="openImg(this.src)">
+    <img src="tools4.jpg" onclick="openImg(this.src)">
+  </div>
+</div>
+
+<div class="rail">
+  <div class="rail-title">CAPS & BONNETS</div>
+  <div class="rail-track">
+    <img src="bonnet1.jpg" onclick="openImg(this.src)">
+    <img src="bonnet2.jpg" onclick="openImg(this.src)">
+    <img src="bonnet3.jpg" onclick="openImg(this.src)">
+    <img src="bonnet4.jpg" onclick="openImg(this.src)">
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="services">
+  <div class="rail-title">OUR SERVICES</div>
+  <div class="service" onclick="service('Product sourcing')">Product sourcing (custom requests)</div>
+  <div class="service" onclick="service('Gift bundling')">Gift bundling</div>
+  <div class="service" onclick="service('Delivery coordination')">Delivery coordination</div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="actions" style="margin-top:38px;">
+  <a href="https://warstreetdigital.github.io/Business-suite/Chantanya/Dashboard">
+    <div class="btn">🔐 OPERATOR DASHBOARD</div>
+  </a>
+</div>
+
+<!-- EXPLORE -->
+<div class="actions">
+  <a href="https://warstreetdigital.github.io/Shopystreet-/Explore">
+    <div class="btn">EXPLORE OTHER STORES</div>
+  </a>
+</div>
+
+<div class="footer">Powered by Shopystreet</div>
+
+</div>
+
+<!-- IMAGE MODAL -->
+<div id="modal" class="modal">
+  <div class="back" onclick="closeImg()">← Back</div>
+  <img id="modalImg">
+</div>
+
+<script>
+function toggleAudio(){
+  const a=document.getElementById("audio");
+  a.paused ? a.play() : a.pause();
+}
+function openImg(src){
+  modalImg.src=src;
+  modal.classList.add("active");
+}
+function closeImg(){
+  modal.classList.remove("active");
+}
+function service(name){
+  window.location.href =
+    "https://wa.me/263777542031?text=Hi,%20I%20need%20help%20with%20" +
+    encodeURIComponent(name) +
+    ".%20Please%20share%20details%20below%20(and%20you%20can%20attach%20images).";
+}
+</script>
+
+</body>
+</html>
