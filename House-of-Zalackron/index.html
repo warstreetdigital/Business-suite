@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOUSE OF ZALACKRON | Electrical • Solar • Plumbing</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f5f7f8;        /* light industrial */
+  --panel:#ffffff;
+  --fg:#1e2a32;
+  --muted:#6b7a86;
+  --border:#d6dde3;
+  --accent:#2f8f6b;    /* energy green */
+}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:"Inter Tight",system-ui;
+  background:var(--bg);
+  color:var(--fg);
+  text-align:center;
+}
+
+.container{
+  max-width:100%;
+  padding:28px 16px 90px;
+}
+
+/* HERO */
+h1{
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:1.8px;
+  margin:0;
+}
+.tagline{
+  font-size:14px;
+  color:var(--muted);
+  margin-top:8px;
+}
+.location{
+  font-size:12px;
+  letter-spacing:1.4px;
+  color:var(--muted);
+  margin-top:6px;
+}
+.system{
+  font-size:11px;
+  letter-spacing:1.2px;
+  color:var(--muted);
+  margin-top:18px;
+}
+
+/* ATTENTION */
+.attention video{
+  width:100%;
+  border-radius:16px;
+  margin:32px 0;
+}
+
+/* AUDIO */
+.audio-box{
+  background:var(--panel);
+  border:1px solid var(--border);
+  padding:16px;
+  margin-bottom:28px;
+}
+.audio-btn{
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:1.4px;
+  color:var(--accent);
+  cursor:pointer;
+}
+
+/* ACTIONS */
+.actions{
+  display:flex;
+  gap:14px;
+  margin-bottom:38px;
+}
+.actions a{
+  flex:1;
+  text-decoration:none;
+}
+.btn{
+  padding:16px;
+  background:#eef3f6;
+  border:1px solid var(--border);
+  color:var(--fg);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:1.4px;
+}
+
+/* SERVICE CARDS */
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  padding:22px 18px 26px;
+  margin-bottom:32px;
+  text-align:left;
+}
+.card h3{
+  font-size:15px;
+  letter-spacing:1.6px;
+  margin:0 0 10px;
+}
+.card p{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+  margin-bottom:16px;
+}
+
+/* EDITORIAL RAIL */
+.rail{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+}
+.rail img{
+  width:240px;
+  border-radius:14px;
+  flex-shrink:0;
+}
+
+/* CARD ACTION */
+.card-action{
+  margin-top:18px;
+}
+.card-action button{
+  width:100%;
+  padding:14px;
+  background:#eef3f6;
+  border:1px solid var(--border);
+  font-weight:700;
+  letter-spacing:1.4px;
+}
+
+/* FOOTER */
+.footer{
+  margin-top:44px;
+  font-size:11px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>HOUSE OF ZALACKRON</h1>
+<div class="tagline">Professional electrical, solar & plumbing services</div>
+<div class="location">HARARE • PROJECT & ON-SITE</div>
+<div class="system">Shopystreet Store</div>
+
+<!-- ATTENTION ANCHOR -->
+<div class="attention">
+  <video src="attention.mp4" autoplay muted loop playsinline></video>
+</div>
+
+<!-- AUDIO -->
+<div class="audio-box">
+  <div class="audio-btn" onclick="toggleAudio()">▶ LISTEN TO COMPANY INTRO</div>
+  <audio id="audio" src="zalackron.mp3"></audio>
+</div>
+
+<!-- PRIMARY ACTIONS -->
+<div class="actions">
+  <a href="tel:0779068932"><div class="btn">CALL OFFICE</div></a>
+  <a href="https://wa.me/263779068932"><div class="btn">REQUEST SERVICE</div></a>
+</div>
+
+<!-- ELECTRICAL CARD -->
+<div class="card">
+  <h3>ELECTRICAL SERVICES</h3>
+  <p>
+    Residential and commercial electrical installations,
+    fault finding, rewiring, and compliance work.
+  </p>
+
+  <div class="rail">
+    <img src="electrical1.jpg">
+    <img src="electrical2.jpg">
+    <img src="electrical3.jpg">
+    <img src="electrical4.jpg">
+  </div>
+
+  <div class="card-action">
+    <button onclick="inquire('Electrical Services')">INQUIRE ELECTRICAL</button>
+  </div>
+</div>
+
+<!-- SOLAR CARD -->
+<div class="card">
+  <h3>SOLAR INSTALLATION</h3>
+  <p>
+    Complete solar power solutions including design,
+    installation, upgrades, and maintenance.
+  </p>
+
+  <div class="rail">
+    <img src="solar1.jpg">
+    <img src="solar2.jpg">
+    <img src="solar3.jpg">
+    <img src="solar4.jpg">
+  </div>
+
+  <div class="card-action">
+    <button onclick="inquire('Solar Installation')">INQUIRE SOLAR</button>
+  </div>
+</div>
+
+<!-- PLUMBING CARD -->
+<div class="card">
+  <h3>PLUMBING SERVICES</h3>
+  <p>
+    Plumbing installations, repairs, water systems,
+    leak detection, and maintenance services.
+  </p>
+
+  <div class="rail">
+    <img src="plumbing1.jpg">
+    <img src="plumbing2.jpg">
+    <img src="plumbing3.jpg">
+    <img src="plumbing4.jpg">
+  </div>
+
+  <div class="card-action">
+    <button onclick="inquire('Plumbing Services')">INQUIRE PLUMBING</button>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="actions">
+  <a href="https://warstreetdigital.github.io/Business-suite/House-of-Zalackron/Dashboard/">
+    <div class="btn">🔐 OPERATOR DASHBOARD</div>
+  </a>
+</div>
+
+<!-- EXPLORE -->
+<div class="actions">
+  <a href="https://warstreetdigital.github.io/Shopystreet-/Explore">
+    <div class="btn">EXPLORE OTHER STORES</div>
+  </a>
+</div>
+
+<div class="footer">
+  Powered by Shopystreet
+</div>
+
+</div>
+
+<script>
+function toggleAudio(){
+  const a=document.getElementById("audio");
+  a.paused?a.play():a.pause();
+}
+function inquire(service){
+  window.location.href=
+    "https://wa.me/263779068932?text=Hello,%20I%20would%20like%20to%20inquire%20about%20"+
+    encodeURIComponent(service)+"%20from%20House%20of%20Zalackron.";
+}
+</script>
+
+</body>
+  </html>
