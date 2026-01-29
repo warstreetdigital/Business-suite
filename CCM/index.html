@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CCM HOUSING & DEVELOPMENT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* --- Global Styles --- */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f3ef;
+      color: #1a1a1a;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    h1, h2, h3, h4 {
+      text-transform: uppercase;
+      margin: 0.5em 0;
+    }
+
+    p {
+      margin: 0.5em 1em;
+    }
+
+    /* --- Hero / Cover --- */
+    .hero {
+      position: relative;
+      background: url('cover.jpg') center/cover no-repeat;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* --- Social Media --- */
+    .social-icons {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: 1rem;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      background: linear-gradient(145deg, #2b2b2b, #1a1a1a);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 -3px 6px rgba(255,255,255,0.15);
+      transition: all 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.5), inset 0 -3px 6px rgba(255,255,255,0.2);
+    }
+
+    /* --- Store Audio --- */
+    .store-audio {
+      margin: 1em 0;
+    }
+
+    /* --- Buttons --- */
+    .btn {
+      display: inline-block;
+      background: linear-gradient(145deg, #2b2b2b, #1a1a1a);
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 0.8rem 1.5rem;
+      margin: 0.5rem;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 -3px 6px rgba(255,255,255,0.15);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.5), inset 0 -3px 6px rgba(255,255,255,0.2);
+    }
+
+    /* --- Cards / Services --- */
+    .card {
+      background: #fff;
+      margin: 1em auto;
+      padding: 1em;
+      max-width: 600px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .rail img {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      margin: 0.3rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .rail img:hover {
+      transform: scale(1.05);
+    }
+
+    /* --- Modals --- */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 1em;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+      text-align: left;
+    }
+
+    .modal input, .modal textarea {
+      width: 100%;
+      margin: 0.5em 0;
+      padding: 0.5em;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    /* --- Footer --- */
+    .footer {
+      padding: 1em 0;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    /* --- Marketing Caption --- */
+    .marketing-msg {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1em;
+      color: #1a1a1a;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Hero / Cover -->
+  <div class="hero" onclick="toggleSocial()">
+    <h1 style="color:#fff;">CCM HOUSING & DEVELOPMENT</h1>
+    <div class="social-icons" id="socialIcons">
+      <a href="#" target="_blank">Facebook</a>
+      <a href="#" target="_blank">Instagram</a>
+      <a href="#" target="_blank">Twitter</a>
+    </div>
+  </div>
+
+  <!-- Store Audio -->
+  <div class="store-audio">
+    <audio id="audio" controls>
+      <source src="audio.mp3" type="audio/mp3">
+      Your browser does not support audio.
+    </audio>
+  </div>
+
+  <!-- Call and Inquire Buttons -->
+  <div>
+    <button class="btn" onclick="alert('Call function pending')">CALL</button>
+    <button class="btn" onclick="alert('Inquiry function pending')">INQUIRE</button>
+  </div>
+
+  <!-- Marketing Message -->
+  <div class="marketing-msg">
+    WE PROVIDE STANDS, BOREHOLE DRILLING, SOLAR INSTALLATION, AND QUALITY CONSTRUCTION SERVICES
+  </div>
+
+  <!-- Services Section -->
+
+  <!-- Service 1 -->
+  <div class="card">
+    <h3>STANDS FOR SALE</h3>
+    <p>Secure your property with CCM Housing & Development. Affordable stands in prime locations.</p>
+    <div class="rail">
+      <img src="stand1.jpg" onclick="openImageModal(this.src)">
+      <img src="stand2.jpg" onclick="openImageModal(this.src)">
+      <img src="stand3.jpg" onclick="openImageModal(this.src)">
+      <img src="stand4.jpg" onclick="openImageModal(this.src)">
+    </div>
+    <div>
+      <button class="btn" onclick="alert('Inquiry function pending')">INQUIRE STANDS</button>
+    </div>
+  </div>
+
+  <!-- Service 2 -->
+  <div class="card">
+    <h3>BOREHOLE DRILLING & SOLAR INSTALLATION</h3>
+    <p>Professional borehole drilling and complete solar installation services.</p>
+    <div class="rail">
+      <img src="borehole1.jpg" onclick="openImageModal(this.src)">
+      <img src="solar1.jpg" onclick="openImageModal(this.src)">
+      <img src="solar2.jpg" onclick="openImageModal(this.src)">
+      <img src="solar3.jpg" onclick="openImageModal(this.src)">
+    </div>
+    <div>
+      <button class="btn" onclick="alert('Inquiry function pending')">INQUIRE BOREHOLE/SOLAR</button>
+    </div>
+  </div>
+
+  <!-- Service 3 -->
+  <div class="card">
+    <h3>CONSTRUCTION SERVICES</h3>
+    <p>High-quality construction services for residential and commercial projects.</p>
+    <div class="rail">
+      <img src="construction1.jpg" onclick="openImageModal(this.src)">
+      <img src="construction2.jpg" onclick="openImageModal(this.src)">
+      <img src="construction3.jpg" onclick="openImageModal(this.src)">
+      <img src="construction4.jpg" onclick="openImageModal(this.src)">
+    </div>
+    <div>
+      <button class="btn" onclick="alert('Inquiry function pending')">INQUIRE CONSTRUCTION</button>
+    </div>
+  </div>
+
+  <!-- Image Modal -->
+  <div class="modal" id="imageModal" onclick="closeImageModal(event)">
+    <div class="modal-content">
+      <img id="modalImg" src="" style="width:100%; border-radius:6px;">
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Powered by Shopystreet
+  </div>
+
+  <script>
+    function toggleSocial() {
+      const icons = document.getElementById('socialIcons');
+      icons.style.visibility = icons.style.visibility === 'visible' ? 'hidden' : 'visible';
+    }
+
+    function openImageModal(src) {
+      const modal = document.getElementById('imageModal');
+      const img = document.getElementById('modalImg');
+      img.src = src;
+      modal.style.display = 'flex';
+    }
+
+    function closeImageModal(event) {
+      if(event.target.id === 'imageModal') {
+        document.getElementById('imageModal').style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+        </html>
