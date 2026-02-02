@@ -15,22 +15,30 @@
       color: #222;
     }
 
+    /* HERO */
+    header {
+      background: url('cover.jpg') center/cover no-repeat;
+      padding: 72px 16px;
+      text-align: center;
+    }
+
     h1.attention-anchor {
       font-size: 32px;
       font-weight: 700;
       text-transform: uppercase;
-      text-align: center;
-      margin: 24px 0;
+      margin: 0 0 16px;
+      color: #111;
     }
 
     p.body-text {
-      text-align: center;
-      max-width: 720px;
+      max-width: 760px;
       margin: 12px auto;
+      text-align: center;
+      font-size: 16px;
     }
 
     section {
-      padding: 32px 16px;
+      padding: 36px 16px;
       text-align: center;
     }
 
@@ -40,11 +48,13 @@
       color: #FFFFFF;
       font-weight: 700;
       text-transform: uppercase;
-      padding: 12px 26px;
+      padding: 12px 28px;
       border: none;
       border-radius: 4px;
       letter-spacing: 1px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 6px 14px rgba(0,0,0,0.35);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.15),
+        0 6px 14px rgba(0,0,0,0.35);
       cursor: pointer;
       margin: 12px 6px;
     }
@@ -65,7 +75,7 @@
       scroll-snap-align: start;
     }
 
-    /* LIGHTBOX (IMAGES) */
+    /* IMAGE LIGHTBOX */
     #lightbox-overlay {
       display: none;
       position: fixed;
@@ -87,7 +97,7 @@
       top: 20px;
       right: 30px;
       font-size: 48px;
-      color: white;
+      color: #fff;
       cursor: pointer;
     }
 
@@ -104,7 +114,7 @@
       box-shadow: 0 6px 18px rgba(0,0,0,0.35);
     }
 
-    /* VIDEO MODAL */
+    /* VIDEO LIGHTBOX */
     #video-overlay {
       display: none;
       position: fixed;
@@ -125,20 +135,7 @@
       top: 20px;
       right: 30px;
       font-size: 48px;
-      color: white;
-      cursor: pointer;
-    }
-
-    /* SOCIAL */
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .social-icons img {
-      width: 26px;
-      height: 26px;
+      color: #fff;
       cursor: pointer;
     }
   </style>
@@ -149,16 +146,17 @@
 <!-- HERO -->
 <header>
   <h1 class="attention-anchor">RHINO CONSTRUCTION COMPANY</h1>
-  <p class="body-text">FOR ALL YOUR INTERIOR AND EXTERIOR DESIGNING. DOMESTIC & COMMERCIAL IMPROVEMENTS.</p>
+  <p class="body-text">
+    FOR ALL YOUR INTERIOR AND EXTERIOR DESIGNING. DOMESTIC & COMMERCIAL IMPROVEMENTS.
+  </p>
 </header>
 
-<!-- HERO AUDIO -->
+<!-- HERO AUDIO + ATTENTION VIDEO -->
 <section>
   <audio controls>
     <source src="store-audio.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- ATTENTION VIDEO -->
   <div class="attention-video-wrapper">
     <video class="attention-video-preview" muted playsinline>
       <source src="attention.mp4" type="video/mp4">
@@ -176,6 +174,12 @@
     <img src="interior3.jpg" class="lightbox">
     <img src="interior4.jpg" class="lightbox">
   </div>
+
+  <button class="primary" onclick="location.href='tel:0789976011'">CALL</button>
+  <button class="primary"
+    onclick="location.href='https://wa.me/263789976011?text=Hello%20Rhino%20Construction,%20I%20would%20like%20to%20inquire%20about%20your%20interior%20design%20services.'">
+    INQUIRE
+  </button>
 </section>
 
 <!-- EXTERIOR -->
@@ -187,6 +191,12 @@
     <img src="exterior3.jpg" class="lightbox">
     <img src="exterior4.jpg" class="lightbox">
   </div>
+
+  <button class="primary" onclick="location.href='tel:0789976011'">CALL</button>
+  <button class="primary"
+    onclick="location.href='https://wa.me/263789976011?text=Hello%20Rhino%20Construction,%20I%20would%20like%20to%20inquire%20about%20your%20exterior%20design%20services.'">
+    INQUIRE
+  </button>
 </section>
 
 <!-- COMMERCIAL -->
@@ -200,15 +210,16 @@
   </div>
 
   <button class="primary" onclick="location.href='tel:0789976011'">CALL</button>
-  <button class="primary" onclick="location.href='tel:0789976011'">INQUIRE</button>
+  <button class="primary"
+    onclick="location.href='https://wa.me/263789976011?text=Hello%20Rhino%20Construction,%20I%20would%20like%20to%20inquire%20about%20your%20commercial%20construction%20services.'">
+    INQUIRE
+  </button>
 </section>
 
-<!-- SOCIAL -->
+<!-- SOCIAL (TEXT ONLY) -->
 <section>
-  <div class="social-icons">
-    <a href="https://facebook.com/rhinoconstruction"><img src="facebook.svg"></a>
-    <a href="https://instagram.com/rhinoconstruction"><img src="instagram.svg"></a>
-  </div>
+  <p class="body-text"><strong>FACEBOOK:</strong> RHINO CONSTRUCTION</p>
+  <p class="body-text"><strong>INSTAGRAM:</strong> RHINO CONSTRUCTION</p>
 </section>
 
 <!-- IMAGE LIGHTBOX -->
@@ -226,28 +237,43 @@
 </div>
 
 <script>
+  /* IMAGE LIGHTBOX */
   const lbOverlay = document.getElementById('lightbox-overlay');
   const lbImg = document.getElementById('lightbox-img');
-  document.querySelectorAll('.lightbox').forEach(img=>{
-    img.onclick = ()=>{ lbImg.src = img.src; lbOverlay.style.display='flex'; }
-  });
-  document.getElementById('lightbox-close').onclick = ()=> lbOverlay.style.display='none';
-  lbOverlay.onclick = e=>{ if(e.target===lbOverlay) lbOverlay.style.display='none'; };
 
+  document.querySelectorAll('.lightbox').forEach(img => {
+    img.addEventListener('click', () => {
+      lbImg.src = img.src;
+      lbOverlay.style.display = 'flex';
+    });
+  });
+
+  document.getElementById('lightbox-close').onclick = () => {
+    lbOverlay.style.display = 'none';
+  };
+
+  lbOverlay.onclick = e => {
+    if (e.target === lbOverlay) lbOverlay.style.display = 'none';
+  };
+
+  /* VIDEO LIGHTBOX */
   const videoOverlay = document.getElementById('video-overlay');
   const videoFull = document.getElementById('video-full');
-  function openVideo(){
-    videoOverlay.style.display='flex';
+
+  function openVideo() {
+    videoOverlay.style.display = 'flex';
     videoFull.play();
   }
-  document.getElementById('video-close').onclick = ()=>{
+
+  document.getElementById('video-close').onclick = () => {
     videoFull.pause();
-    videoOverlay.style.display='none';
+    videoOverlay.style.display = 'none';
   };
-  videoOverlay.onclick = e=>{
-    if(e.target===videoOverlay){
+
+  videoOverlay.onclick = e => {
+    if (e.target === videoOverlay) {
       videoFull.pause();
-      videoOverlay.style.display='none';
+      videoOverlay.style.display = 'none';
     }
   };
 </script>
