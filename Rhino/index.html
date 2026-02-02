@@ -1,281 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rhino Construction Company</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhino Construction Company</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f6f1;
+  --card:#ffffff;
+  --text:#1a1a1a;
+  --muted:#555;
+  --charcoal:#1e1e1e;
+  --radius:18px;
+}
 
-  <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #FDFCF7;
-      margin: 0;
-      color: #222;
-    }
+*{box-sizing:border-box;margin:0;padding:0;}
 
-    /* HERO */
-    header {
-      background: url('cover.jpg') center/cover no-repeat;
-      padding: 72px 16px;
-      text-align: center;
-    }
+body{
+  font-family:"Montserrat",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
 
-    h1.attention-anchor {
-      font-size: 32px;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin: 0 0 16px;
-      color: #111;
-    }
+/* COVER */
+.cover-wrap{position:relative;}
+.cover{width:100%;display:block;}
 
-    p.body-text {
-      max-width: 760px;
-      margin: 12px auto;
-      text-align: center;
-      font-size: 16px;
-    }
+/* SOCIAL FLOAT */
+.social-float{
+  position:absolute;
+  bottom:20px;
+  right:20px;
+  display:none;
+  gap:10px;
+}
+.social-btn{
+  background:rgba(0,0,0,.75);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:8px;
+  font-size:13px;
+  letter-spacing:.5px;
+}
 
-    section {
-      padding: 36px 16px;
-      text-align: center;
-    }
+/* HERO */
+.hero{
+  max-width:900px;
+  margin:0 auto;
+  padding:42px 20px 24px;
+  text-align:center;
+}
+.hero h1{
+  font-size:34px;
+  font-weight:800;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+.hero p{
+  font-size:15px;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  color:var(--muted);
+  line-height:1.6;
+}
 
-    /* BUTTONS */
-    button.primary {
-      background: linear-gradient(180deg, #2B2B2B, #111111);
-      color: #FFFFFF;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 12px 28px;
-      border: none;
-      border-radius: 4px;
-      letter-spacing: 1px;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.15),
-        0 6px 14px rgba(0,0,0,0.35);
-      cursor: pointer;
-      margin: 12px 6px;
-    }
+/* SECTIONS */
+.section{
+  max-width:1100px;
+  margin:0 auto;
+  padding:28px 20px;
+}
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:22px;
+  margin-bottom:26px;
+  box-shadow:0 10px 28px rgba(0,0,0,.07);
+}
+.card h2{
+  text-align:center;
+  font-size:18px;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  margin-bottom:16px;
+}
 
-    /* MEDIA RAIL */
-    .media-rail {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      padding: 16px 0;
-      scroll-snap-type: x mandatory;
-    }
+/* AUDIO */
+.audio-card audio{width:100%;}
 
-    .media-rail img {
-      max-width: 300px;
-      border-radius: 6px;
-      cursor: pointer;
-      scroll-snap-align: start;
-    }
+/* IMAGE RAIL (ONLY CHANGE) */
+.gallery{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  padding-bottom:6px;
+  scroll-snap-type:x mandatory;
+}
+.gallery img{
+  flex:0 0 auto;
+  width:220px;
+  height:150px;
+  object-fit:cover;
+  border-radius:14px;
+  cursor:pointer;
+  scroll-snap-align:start;
+}
 
-    /* IMAGE LIGHTBOX */
-    #lightbox-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.92);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-    }
+/* ACTION BUTTONS */
+.actions{
+  display:flex;
+  gap:14px;
+  margin-top:18px;
+}
+.btn{
+  flex:1;
+  padding:14px;
+  border-radius:14px;
+  background:var(--charcoal);
+  color:#fff;
+  text-align:center;
+  text-decoration:none;
+  font-size:14px;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+}
 
-    #lightbox-overlay img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 6px;
-    }
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:100;
+}
+.modal-content{
+  max-width:92%;
+  max-height:92%;
+  position:relative;
+}
+.modal-content img,
+.modal-content video{
+  width:100%;
+  border-radius:14px;
+}
+.close{
+  position:absolute;
+  top:-42px;
+  right:0;
+  font-size:30px;
+  color:#fff;
+  cursor:pointer;
+}
 
-    #lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 48px;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    /* ATTENTION VIDEO */
-    .attention-video-wrapper {
-      margin: 32px auto;
-      text-align: center;
-    }
-
-    .attention-video-preview {
-      max-width: 720px;
-      width: 100%;
-      border-radius: 6px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-    }
-
-    /* VIDEO LIGHTBOX */
-    #video-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.95);
-      z-index: 10000;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #video-overlay video {
-      max-width: 90%;
-      max-height: 90%;
-    }
-
-    #video-close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 48px;
-      color: #fff;
-      cursor: pointer;
-    }
-  </style>
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:26px 20px;
+  font-size:13px;
+  color:#666;
+}
+</style>
 </head>
 
 <body>
 
+<!-- COVER -->
+<div class="cover-wrap" onclick="toggleSocial()">
+  <img src="cover.jpg" class="cover">
+  <div class="social-float" id="socialFloat">
+    <div class="social-btn">IG · RHINO CONSTRUCTIONS</div>
+    <div class="social-btn">FB · RHINO CONSTRUCTIONS</div>
+  </div>
+</div>
+
 <!-- HERO -->
-<header>
-  <h1 class="attention-anchor">RHINO CONSTRUCTION COMPANY</h1>
-  <p class="body-text">
-    FOR ALL YOUR INTERIOR AND EXTERIOR DESIGNING. DOMESTIC & COMMERCIAL IMPROVEMENTS.
+<section class="hero">
+  <h1>RHINO CONSTRUCTION COMPANY</h1>
+  <p>
+    FOR ALL YOUR INTERIOR AND EXTERIOR DESIGNING.  
+    DOMESTIC & COMMERCIAL IMPROVEMENTS.
   </p>
-</header>
+</section>
 
-<!-- HERO AUDIO + ATTENTION VIDEO -->
-<section>
-  <audio controls>
-    <source src="store-audio.mp3" type="audio/mpeg">
-  </audio>
+<!-- AUDIO -->
+<section class="section">
+  <div class="card audio-card">
+    <h2>Company Introduction</h2>
+    <audio controls src="audio.mp3"></audio>
+  </div>
+</section>
 
-  <div class="attention-video-wrapper">
-    <video class="attention-video-preview" muted playsinline>
-      <source src="attention.mp4" type="video/mp4">
-    </video>
-    <button class="primary" onclick="openVideo()">VIEW FULL</button>
+<!-- ATTENTION -->
+<section class="section">
+  <div class="card">
+    <h2>Our Work. Our Standard.</h2>
+    <a class="btn" onclick="openVideo()">View Full Presentation</a>
   </div>
 </section>
 
 <!-- INTERIOR -->
-<section>
-  <h2>INTERIOR DESIGN</h2>
-  <div class="media-rail">
-    <img src="interior1.jpg" class="lightbox">
-    <img src="interior2.jpg" class="lightbox">
-    <img src="interior3.jpg" class="lightbox">
-    <img src="interior4.jpg" class="lightbox">
+<section class="section">
+  <div class="card">
+    <h2>Interior Services</h2>
+    <div class="gallery">
+      <img src="interior1.jpg" onclick="openImage(this.src)">
+      <img src="interior2.jpg" onclick="openImage(this.src)">
+      <img src="interior3.jpg" onclick="openImage(this.src)">
+      <img src="interior4.jpg" onclick="openImage(this.src)">
+    </div>
+    <div class="actions">
+      <a class="btn" href="tel:+263789976011">Call</a>
+      <a class="btn" href="https://wa.me/263789976011?text=Interior%20service%20inquiry">Inquiry</a>
+    </div>
   </div>
-
-  <button class="primary" onclick="location.href='tel:0789976011'">CALL</button>
-  <button class="primary"
-    onclick="location.href='https://wa.me/263789976011?text=Hello%20Rhino%20Construction,%20I%20would%20like%20to%20inquire%20about%20your%20interior%20design%20services.'">
-    INQUIRE
-  </button>
 </section>
 
 <!-- EXTERIOR -->
-<section>
-  <h2>EXTERIOR DESIGN</h2>
-  <div class="media-rail">
-    <img src="exterior1.jpg" class="lightbox">
-    <img src="exterior2.jpg" class="lightbox">
-    <img src="exterior3.jpg" class="lightbox">
-    <img src="exterior4.jpg" class="lightbox">
+<section class="section">
+  <div class="card">
+    <h2>Exterior Services</h2>
+    <div class="gallery">
+      <img src="exterior1.jpg" onclick="openImage(this.src)">
+      <img src="exterior2.jpg" onclick="openImage(this.src)">
+      <img src="exterior3.jpg" onclick="openImage(this.src)">
+      <img src="exterior4.jpg" onclick="openImage(this.src)">
+    </div>
+    <div class="actions">
+      <a class="btn" href="tel:+263789976011">Call</a>
+      <a class="btn" href="https://wa.me/263789976011?text=Exterior%20service%20inquiry">Inquiry</a>
+    </div>
   </div>
-
-  <button class="primary" onclick="location.href='tel:0789976011'">CALL</button>
-  <button class="primary"
-    onclick="location.href='https://wa.me/263789976011?text=Hello%20Rhino%20Construction,%20I%20would%20like%20to%20inquire%20about%20your%20exterior%20design%20services.'">
-    INQUIRE
-  </button>
 </section>
 
 <!-- COMMERCIAL -->
-<section>
-  <h2>COMMERCIAL PROJECTS</h2>
-  <div class="media-rail">
-    <img src="commercial1.jpg" class="lightbox">
-    <img src="commercial2.jpg" class="lightbox">
-    <img src="commercial3.jpg" class="lightbox">
-    <img src="commercial4.jpg" class="lightbox">
+<section class="section">
+  <div class="card">
+    <h2>Commercial Projects</h2>
+    <div class="gallery">
+      <img src="commercial1.jpg" onclick="openImage(this.src)">
+      <img src="commercial2.jpg" onclick="openImage(this.src)">
+      <img src="commercial3.jpg" onclick="openImage(this.src)">
+      <img src="commercial4.jpg" onclick="openImage(this.src)">
+    </div>
+    <div class="actions">
+      <a class="btn" href="tel:+263789976011">Call</a>
+      <a class="btn" href="https://wa.me/263789976011?text=Commercial%20project%20inquiry">Inquiry</a>
+    </div>
   </div>
-
-  <button class="primary" onclick="location.href='tel:0789976011'">CALL</button>
-  <button class="primary"
-    onclick="location.href='https://wa.me/263789976011?text=Hello%20Rhino%20Construction,%20I%20would%20like%20to%20inquire%20about%20your%20commercial%20construction%20services.'">
-    INQUIRE
-  </button>
 </section>
 
-<!-- SOCIAL (TEXT ONLY) -->
-<section>
-  <p class="body-text"><strong>FACEBOOK:</strong> RHINO CONSTRUCTION</p>
-  <p class="body-text"><strong>INSTAGRAM:</strong> RHINO CONSTRUCTION</p>
-</section>
-
-<!-- IMAGE LIGHTBOX -->
-<div id="lightbox-overlay">
-  <span id="lightbox-close">&times;</span>
-  <img id="lightbox-img">
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <span class="close" onclick="closeModal()">✕</span>
+    <div id="modalBody"></div>
+  </div>
 </div>
 
-<!-- VIDEO LIGHTBOX -->
-<div id="video-overlay">
-  <span id="video-close">&times;</span>
-  <video id="video-full" controls>
-    <source src="attention.mp4" type="video/mp4">
-  </video>
-</div>
+<footer>
+  Powered by Shopystreet
+</footer>
 
 <script>
-  /* IMAGE LIGHTBOX */
-  const lbOverlay = document.getElementById('lightbox-overlay');
-  const lbImg = document.getElementById('lightbox-img');
-
-  document.querySelectorAll('.lightbox').forEach(img => {
-    img.addEventListener('click', () => {
-      lbImg.src = img.src;
-      lbOverlay.style.display = 'flex';
-    });
-  });
-
-  document.getElementById('lightbox-close').onclick = () => {
-    lbOverlay.style.display = 'none';
-  };
-
-  lbOverlay.onclick = e => {
-    if (e.target === lbOverlay) lbOverlay.style.display = 'none';
-  };
-
-  /* VIDEO LIGHTBOX */
-  const videoOverlay = document.getElementById('video-overlay');
-  const videoFull = document.getElementById('video-full');
-
-  function openVideo() {
-    videoOverlay.style.display = 'flex';
-    videoFull.play();
-  }
-
-  document.getElementById('video-close').onclick = () => {
-    videoFull.pause();
-    videoOverlay.style.display = 'none';
-  };
-
-  videoOverlay.onclick = e => {
-    if (e.target === videoOverlay) {
-      videoFull.pause();
-      videoOverlay.style.display = 'none';
-    }
-  };
+function toggleSocial(){
+  const s=document.getElementById("socialFloat");
+  s.style.display=s.style.display==="flex"?"none":"flex";
+}
+function openImage(src){
+  document.getElementById("modalBody").innerHTML=`<img src="${src}">`;
+  document.getElementById("modal").style.display="flex";
+}
+function openVideo(){
+  document.getElementById("modalBody").innerHTML=
+    `<video src="attention.mp4" controls autoplay></video>`;
+  document.getElementById("modal").style.display="flex";
+}
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+  document.getElementById("modalBody").innerHTML="";
+}
 </script>
 
 </body>
