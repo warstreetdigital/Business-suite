@@ -4,260 +4,253 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rhino Construction Company</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
-      color: #333333;
       background-color: #FDFCF7;
       margin: 0;
-      padding: 0;
-      line-height: 1.5;
+      color: #222;
     }
 
     h1.attention-anchor {
-      font-weight: 700;
       font-size: 32px;
-      line-height: 1.3;
+      font-weight: 700;
       text-transform: uppercase;
-      color: #111111;
       text-align: center;
       margin: 24px 0;
     }
 
-    h2.section-title {
-      font-weight: 600;
-      font-size: 22px;
-      line-height: 1.4;
-      text-transform: capitalize;
-      color: #222222;
-      margin: 20px 0;
-      text-align: center;
-    }
-
     p.body-text {
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 1.5;
-      color: #333333;
-      margin: 12px 0;
       text-align: center;
-    }
-
-    button.primary {
-      background-color: #111111; /* Charcoal black */
-      color: #FDFCF7; /* Off-white text */
-      font-weight: 700;
-      font-size: 16px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 4px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      margin: 16px 8px;
-    }
-
-    button.primary:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-    }
-
-    .media-rail {
-      display: flex;
-      overflow-x: auto;
-      gap: 16px;
-      padding: 16px 0;
-      scroll-snap-type: x mandatory;
-      justify-content: center;
-    }
-
-    .media-rail img {
-      width: 100%;
-      max-width: 300px;
-      height: auto;
-      object-fit: cover;
-      border-radius: 4px;
-      scroll-snap-align: start;
-      cursor: pointer;
+      max-width: 720px;
+      margin: 12px auto;
     }
 
     section {
       padding: 32px 16px;
       text-align: center;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      margin: 24px auto;
-      max-width: 900px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin: 24px 0;
-    }
-
-    .social-icons img {
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-    }
-
-    .social-handle {
-      font-weight: 500;
-      font-size: 14px;
+    /* BUTTONS */
+    button.primary {
+      background: linear-gradient(180deg, #2B2B2B, #111111);
+      color: #FFFFFF;
+      font-weight: 700;
       text-transform: uppercase;
-      color: #111111;
-      text-align: center;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 4px;
+      letter-spacing: 1px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 6px 14px rgba(0,0,0,0.35);
+      cursor: pointer;
+      margin: 12px 6px;
     }
 
-    .cover-img {
-      width: 100%;
-      max-width: 900px;
-      height: auto;
+    /* MEDIA RAIL */
+    .media-rail {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding: 16px 0;
+      scroll-snap-type: x mandatory;
+    }
+
+    .media-rail img {
+      max-width: 300px;
       border-radius: 6px;
-      display: block;
-      margin: 0 auto 16px auto;
+      cursor: pointer;
+      scroll-snap-align: start;
     }
 
-    audio.store-audio {
-      display: block;
-      margin: 32px auto;
-      width: 100%;
-      max-width: 600px;
-    }
-
-    /* LIGHTBOX */
+    /* LIGHTBOX (IMAGES) */
     #lightbox-overlay {
       display: none;
       position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      background: rgba(0,0,0,0.9);
-      justify-content:center;
-      align-items:center;
-      z-index:9999;
-      flex-direction: column;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
     }
-    #lightbox-img { max-width: 90%; max-height: 90%; border-radius:6px; }
+
+    #lightbox-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 6px;
+    }
+
     #lightbox-close {
-      color: #fff;
-      font-size: 48px;
       position: absolute;
       top: 20px;
       right: 30px;
+      font-size: 48px;
+      color: white;
       cursor: pointer;
     }
 
+    /* ATTENTION VIDEO */
+    .attention-video-wrapper {
+      margin: 32px auto;
+      text-align: center;
+    }
+
+    .attention-video-preview {
+      max-width: 720px;
+      width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
+
+    /* VIDEO MODAL */
+    #video-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #video-overlay video {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    #video-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 48px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* SOCIAL */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-icons img {
+      width: 26px;
+      height: 26px;
+      cursor: pointer;
+    }
   </style>
 </head>
+
 <body>
 
-  <!-- Hero + Cover -->
-  <header>
-    <img src="images/cover.jpg" alt="Rhino Cover Image" class="cover-img">
-    <h1 class="attention-anchor">Rhino Construction Company</h1>
-    <p class="body-text">
-      For all your interior and exterior designing.  
-      Domestic and commercial improvement.
-    </p>
+<!-- HERO -->
+<header>
+  <h1 class="attention-anchor">RHINO CONSTRUCTION COMPANY</h1>
+  <p class="body-text">FOR ALL YOUR INTERIOR AND EXTERIOR DESIGNING. DOMESTIC & COMMERCIAL IMPROVEMENTS.</p>
+</header>
 
-    <!-- STORE AUDIO BELOW HERO -->
-    <audio controls class="store-audio">
-      <source src="audio.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-  </header>
+<!-- HERO AUDIO -->
+<section>
+  <audio controls>
+    <source src="store-audio.mp3" type="audio/mpeg">
+  </audio>
 
-  <!-- INTERIOR -->
-  <section>
-    <h2 class="section-title">Interior Design</h2>
-    <p class="body-text">
-      Precision interior finishes, modern layouts, and durable design solutions.
-    </p>
-    <a href="tel:0789976011"><button class="primary">Call Now</button></a>
-    <a href="tel:0789976011"><button class="primary">Inquire</button></a>
+  <!-- ATTENTION VIDEO -->
+  <div class="attention-video-wrapper">
+    <video class="attention-video-preview" muted playsinline>
+      <source src="attention.mp4" type="video/mp4">
+    </video>
+    <button class="primary" onclick="openVideo()">VIEW FULL</button>
+  </div>
+</section>
 
-    <div class="media-rail">
-      <img src="images/interior-1.jpg" class="lightbox-trigger">
-      <img src="images/interior-2.jpg" class="lightbox-trigger">
-      <img src="images/interior-3.jpg" class="lightbox-trigger">
-      <img src="images/interior-4.jpg" class="lightbox-trigger">
-    </div>
-  </section>
+<!-- INTERIOR -->
+<section>
+  <h2>INTERIOR DESIGN</h2>
+  <div class="media-rail">
+    <img src="interior1.jpg" class="lightbox">
+    <img src="interior2.jpg" class="lightbox">
+    <img src="interior3.jpg" class="lightbox">
+    <img src="interior4.jpg" class="lightbox">
+  </div>
+</section>
 
-  <!-- EXTERIOR -->
-  <section>
-    <h2 class="section-title">Exterior Design</h2>
-    <p class="body-text">
-      Strong exterior work built for longevity, appeal, and structural confidence.
-    </p>
-    <a href="tel:0789976011"><button class="primary">Call Now</button></a>
-    <a href="tel:0789976011"><button class="primary">Inquire</button></a>
+<!-- EXTERIOR -->
+<section>
+  <h2>EXTERIOR DESIGN</h2>
+  <div class="media-rail">
+    <img src="exterior1.jpg" class="lightbox">
+    <img src="exterior2.jpg" class="lightbox">
+    <img src="exterior3.jpg" class="lightbox">
+    <img src="exterior4.jpg" class="lightbox">
+  </div>
+</section>
 
-    <div class="media-rail">
-      <img src="images/exterior-1.jpg" class="lightbox-trigger">
-      <img src="images/exterior-2.jpg" class="lightbox-trigger">
-      <img src="images/exterior-3.jpg" class="lightbox-trigger">
-      <img src="images/exterior-4.jpg" class="lightbox-trigger">
-    </div>
-  </section>
-
-  <!-- COMMERCIAL -->
-  <section>
-    <h2 class="section-title">Commercial Improvement</h2>
-    <p class="body-text">
-      Professional commercial upgrades designed for business performance and image.
-    </p>
-    <a href="tel:0789976011"><button class="primary">Call Now</button></a>
-    <a href="tel:0789976011"><button class="primary">Inquire</button></a>
-
-    <div class="media-rail">
-      <img src="images/commercial-1.jpg" class="lightbox-trigger">
-      <img src="images/commercial-2.jpg" class="lightbox-trigger">
-      <img src="images/commercial-3.jpg" class="lightbox-trigger">
-      <img src="images/commercial-4.jpg" class="lightbox-trigger">
-    </div>
-  </section>
-
-  <!-- SOCIAL (NO MEDIA) -->
-  <section>
-    <div class="social-icons">
-      <img src="icons/facebook.svg" alt="Facebook">
-      <img src="icons/instagram.svg" alt="Instagram">
-    </div>
-    <p class="social-handle">
-      Facebook @ Rhino Construction<br>
-      Instagram @ rhino construction
-    </p>
-  </section>
-
-  <!-- LIGHTBOX HTML -->
-  <div id="lightbox-overlay">
-    <span id="lightbox-close">&times;</span>
-    <img id="lightbox-img" src="">
+<!-- COMMERCIAL -->
+<section>
+  <h2>COMMERCIAL PROJECTS</h2>
+  <div class="media-rail">
+    <img src="commercial1.jpg" class="lightbox">
+    <img src="commercial2.jpg" class="lightbox">
+    <img src="commercial3.jpg" class="lightbox">
+    <img src="commercial4.jpg" class="lightbox">
   </div>
 
-  <script>
-    const overlay = document.getElementById('lightbox-overlay');
-    const lbImg = document.getElementById('lightbox-img');
-    const triggers = document.querySelectorAll('.lightbox-trigger');
-    const closeBtn = document.getElementById('lightbox-close');
+  <button class="primary" onclick="location.href='tel:0789976011'">CALL</button>
+  <button class="primary" onclick="location.href='tel:0789976011'">INQUIRE</button>
+</section>
 
-    triggers.forEach(img => {
-      img.addEventListener('click', ()=>{
-        lbImg.src = img.src;
-        overlay.style.display = 'flex';
-      });
-    });
+<!-- SOCIAL -->
+<section>
+  <div class="social-icons">
+    <a href="https://facebook.com/rhinoconstruction"><img src="facebook.svg"></a>
+    <a href="https://instagram.com/rhinoconstruction"><img src="instagram.svg"></a>
+  </div>
+</section>
 
-    closeBtn.addEventListener('click', ()=> overlay.style.display='none');
-    overlay.addEventListener('click', (e)=> { if(e.target === overlay) overlay.style.display='none'; });
-  </script>
+<!-- IMAGE LIGHTBOX -->
+<div id="lightbox-overlay">
+  <span id="lightbox-close">&times;</span>
+  <img id="lightbox-img">
+</div>
+
+<!-- VIDEO LIGHTBOX -->
+<div id="video-overlay">
+  <span id="video-close">&times;</span>
+  <video id="video-full" controls>
+    <source src="attention.mp4" type="video/mp4">
+  </video>
+</div>
+
+<script>
+  const lbOverlay = document.getElementById('lightbox-overlay');
+  const lbImg = document.getElementById('lightbox-img');
+  document.querySelectorAll('.lightbox').forEach(img=>{
+    img.onclick = ()=>{ lbImg.src = img.src; lbOverlay.style.display='flex'; }
+  });
+  document.getElementById('lightbox-close').onclick = ()=> lbOverlay.style.display='none';
+  lbOverlay.onclick = e=>{ if(e.target===lbOverlay) lbOverlay.style.display='none'; };
+
+  const videoOverlay = document.getElementById('video-overlay');
+  const videoFull = document.getElementById('video-full');
+  function openVideo(){
+    videoOverlay.style.display='flex';
+    videoFull.play();
+  }
+  document.getElementById('video-close').onclick = ()=>{
+    videoFull.pause();
+    videoOverlay.style.display='none';
+  };
+  videoOverlay.onclick = e=>{
+    if(e.target===videoOverlay){
+      videoFull.pause();
+      videoOverlay.style.display='none';
+    }
+  };
+</script>
 
 </body>
-      </html>
+</html>
